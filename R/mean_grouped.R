@@ -13,8 +13,8 @@
 #' @returns A data frame with a column of names of the groups in y, and another column with the resulting means.
 #' @export
 #'
-#' @examples mean_grouped(x= healthdata$dbh, y= healthdata$status)
-#' mean_grouped(healthdata$percentage_of_crown_living, healthdata$crown_position)
+#' @examples mean_grouped(x= data21$dbh, y= data21$status)
+#' mean_grouped(data22$percentage_of_crown_living, data22$crown_position)
 mean_grouped <- function(x, y,...)
 {
   mean(x)
