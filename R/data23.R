@@ -3,7 +3,7 @@
 #' Health data on trees in the Harvard Forest ForestGEO plot for the year 2023
 #'
 #' @format ## `data23`
-#' A data frame with 30,808 rows and 18 columns:
+#' A data frame with 27,648 rows and 18 columns:
 #' \describe{
 #'   \item{quad_sub_quad}{quadrat-subquadrat}
 #'   \item{stem_tag}{StemTag, unique id}
