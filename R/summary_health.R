@@ -11,6 +11,9 @@
 #'
 #' @returns A data frame with a column with the name of the summary statistic, and a column with the resulting numbers for each level.
 #' @export
+#' @importFrom stats median
+#' @import dplyr
+#' @import tidyr
 #'
 #' @examples summary_health(data21, "crown_position")
 #' summary_health(data22, "wounded_main_stem")
