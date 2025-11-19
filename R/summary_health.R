@@ -1,0 +1,81 @@
+#' Summary of Health Data
+#'
+#' @description
+#' Prints the health summary statistics of the data set grouped by the given parameter.
+#'
+#' @details
+#' For each categorical level the number of trees for each status is calculated. Additionally the mean and median percentage of crown intact and living is calculated.
+#'
+#' @param df the data frame you want a summary of
+#' @param x represents the categorical column in the data set the data will be grouped by.
+#'
+#' @returns A data frame with a column with the name of the summary statistic, and a column with the resulting numbers for each level.
+#' @export
+#'
+#' @examples summary_health(data21, "crown_position")
+#' summary_health(data22, "wounded_main_stem")
+#'
+summary_health <- function(df, x){
+
+  #get the different levels of x
+  levelsOfColumn <- unique(df[[x]])
+  #if x is a factor, sort by levels by the different levels hard coded into x
+  #STILL NEED TO DO
+
+  #Create final data frame
+  statistic_names <- c("A_count", "AU_count", "DC_count", "DS_count", "DN_count",
+                       "NA_status_count", "mean_crown_living", "median_crown_living",
+                       "mean_crown_intact", "median_crown_intact")
+  final_df <- as.data.frame(statistic_names)
+
+  #Set up counter for loop (and to add values later on)
+  count <- 1
+
+  #for each level, take summary statistics
+  for(i in levelsOfColumn){
+
+    #move counter
+    count <- count + 1
+
+    #Filter data
+    status_stats <- df[df[[x]] == i, ]
+
+    #Get the counts for each status
+    final_stats_status <- status_stats |>
+      group_by(status) |>
+      summarise(
+        count = n()
+      )
+
+    #Create column name based on where in the loop you are
+    newName <- paste("result_for", x, as.character(i), sep = "_")
+    names(final_stats_status)[names(final_stats_status) == "count"] <- paste("result_for", x, as.character(i), sep = "_")
+
+    #Rename everything to match
+    final_stats_status <- final_stats_status |>
+      mutate(statistic_names = case_when(
+        status == "A" ~ "A_count",
+        status == "AU" ~ "AU_count",
+        status == "DC" ~ "DC_count",
+        status == "DS" ~ "DS_count",
+        status == "DN" ~ "DN_count",
+        is.na(status) ~ "NA_status_count"
+      )) |>
+      select(-status)
+
+    #Add to the final data set
+    final_df <- final_df |>
+      left_join(final_stats_status)
+
+    #Adding in the mean and medians
+    final_df[7,count] <- mean(status_stats$percentage_of_crown_living, na.rm = TRUE)
+    final_df[8,count] <- median(status_stats$percentage_of_crown_living, na.rm = TRUE)
+    final_df[9,count] <- mean(status_stats$percentage_of_crown_intact, na.rm = TRUE)
+    final_df[10,count] <- median(status_stats$percentage_of_crown_intact, na.rm = TRUE)
+
+  }
+
+  #Return the final dataframe
+  return(final_df)
+
+}
