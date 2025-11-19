@@ -4,24 +4,26 @@
 \alias{logistic_reg_health}
 \title{Logistic Regression By Health Status}
 \usage{
-logistic_reg_health(df, x)
+logistic_reg_health(df, x, ...)
 }
 \arguments{
-\item{df}{the data frame you want to break.}
+\item{df}{the data frame}
 
-\item{x}{represents the categorical column in the data set the data will be broken by.}
+\item{x}{the first variable in the logistic regression model}
+
+\item{...}{additional variables in the logistic regression model}
 }
 \value{
 The best logistic regression model.
 }
 \description{
-NOT DONE: Given a data frame of data a selected variables, build regression models and select the best model based on VALUE?
+NOT DONE
 }
 \details{
-Given a data frame and variables this function will create a logistic regression model to model the status of trees (alive trees (A, AU) to dead trees (DC, DC, DN)) using the provided variables. The model that best fits will be the one returned.
+NOT DONE
 }
 \examples{
-WRITE: logistic_reg_health(data21, )
-logistic_reg_health()
+logistic_reg_health(data21, "species", "dbh")
+
 
 }

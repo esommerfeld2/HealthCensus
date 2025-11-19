@@ -1,23 +1,24 @@
 #' Logistic Regression By Health Status
 #'
 #' @description
-#' NOT DONE: Given a data frame of data a selected variables, build regression models and select the best model based on VALUE?
+#' NOT DONE
 #'
 #' @details
-#' Given a data frame and variables this function will create a logistic regression model to model the status of trees (alive trees (A, AU) to dead trees (DC, DC, DN)) using the provided variables. The model that best fits will be the one returned.
+#' NOT DONE
 #'
-#' @param df the data frame you want to break.
-#' @param x represents the categorical column in the data set the data will be broken by.
+#' @param df the data frame
+#' @param x the first variable in the logistic regression model
+#' @param ... additional variables in the logistic regression model
 #'
 #' @returns The best logistic regression model.
 #' @export
 #' @import dplyr
 #' @import tidyr
 #'
-#' @examples WRITE: logistic_reg_health(data21, )
-#' logistic_reg_health()
+#' @examples logistic_reg_health(data21, "species", "dbh")
 #'
-logistic_reg_health <- function(df, x){
+#'
+logistic_reg_health <- function(df, x, ...){
 
   # a function that does something :0
 
