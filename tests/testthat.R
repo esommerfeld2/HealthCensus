@@ -8,5 +8,7 @@
 
 library(testthat)
 library(HealthCensus)
+library(dplyr)
+library(tidyr)
 
 test_check("HealthCensus")

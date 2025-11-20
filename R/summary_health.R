@@ -24,9 +24,10 @@ summary_health <- function(df, x){
   levelsOfColumn <- unique(df[[x]])
   #if x is a factor, sort by levels by the different levels hard coded into x
   #STILL NEED TO DO
+  #FIX BY REMOVING ALL NAs
 
   #Create final data frame
-  statistic_names <- c("A_count", "AU_count", "DC_count", "DS_count", "DN_count",
+  statistic_names <- c("A_count", "AU_count", "DC_count", "DN_count", "DS_count",
                        "NA_status_count", "mean_crown_living", "median_crown_living",
                        "mean_crown_intact", "median_crown_intact")
   final_df <- as.data.frame(statistic_names)
@@ -60,8 +61,8 @@ summary_health <- function(df, x){
         status == "A" ~ "A_count",
         status == "AU" ~ "AU_count",
         status == "DC" ~ "DC_count",
-        status == "DS" ~ "DS_count",
         status == "DN" ~ "DN_count",
+        status == "DS" ~ "DS_count",
         is.na(status) ~ "NA_status_count"
       )) |>
       select(-status)
