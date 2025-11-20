@@ -1,17 +1,23 @@
 test_that("logistic regression by health works", {
-  # # test a simple case
-  # expect_equal(square(0), 0)
-  #
-  # # test against known value
-  # expect_equal(square(-1), 1)
-  # # test against base R function
-  # expect_equal(square(-1), 1^2)
-  # # test against itself
-  # expect_equal(square(-1), square(1))
-  #
-  # # test a range of values
-  # expect_equal(square(1:10), (1:10)^2)
-  #
-  # # weird edge cases
-  # expect_equal(square(-Inf), Inf)
+  # # test that it returns null
+  # expect_equal(test, actual)
+
+  # # test that one variable returns the correct model
+  # expect_equal(test, actual)
+
+  # # test that two variables returns the correct model
+  # expect_equal(test, actual)
+
+  # # test that three variable returns the correct model
+  # expect_equal(test, actual)
+
+  # # test that one variable (y) returns the correct model
+  # expect_equal(test, actual)
+
+  # # test that warning is created if model is not significant
+  # expect_equal(test, actual)
+
+  # # test that it produces an error
+  # expect_error(test)
+
 })

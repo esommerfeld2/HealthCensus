@@ -52,7 +52,6 @@ summary_health <- function(df, x){
       )
 
     #Create column name based on where in the loop you are
-    newName <- paste("result_for", x, as.character(i), sep = "_")
     names(final_stats_status)[names(final_stats_status) == "count"] <- paste("result_for", x, as.character(i), sep = "_")
 
     #Rename everything to match

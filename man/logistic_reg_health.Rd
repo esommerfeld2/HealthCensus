@@ -4,26 +4,28 @@
 \alias{logistic_reg_health}
 \title{Logistic Regression By Health Status}
 \usage{
-logistic_reg_health(df, x, ...)
+logistic_reg_health(df, x = NULL, y = NULL, z = NULL)
 }
 \arguments{
 \item{df}{the data frame}
 
-\item{x}{the first variable in the logistic regression model}
+\item{x}{the first variable in the logistic regression model, if not provided null is default}
 
-\item{...}{additional variables in the logistic regression model}
+\item{y}{the second variable in the logistic regression model, if not provided null is default}
+
+\item{z}{the third variable in the logistic regression model, if not provided null is default}
 }
 \value{
-The best logistic regression model.
+The best logistic regression model, the one with the lowest AIC.
 }
 \description{
-NOT DONE
+A function that takes a data frame and various variables and computed logistic regression models and returns the one with the lowest AIC.
 }
 \details{
-NOT DONE
+This function takes the variables provided and creates every possible regression model given health (alive or dead) as the response. Then it compares all these models and returns the one with the lowest AIC. The limit of this function is three variables max.
 }
 \examples{
 logistic_reg_health(data21, "species", "dbh")
-
+logistic_reg_health(data24, "species")
 
 }

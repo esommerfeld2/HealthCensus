@@ -12,13 +12,13 @@ df_break_by(df, x)
 \item{x}{represents the categorical column in the data set the data will be broken by.}
 }
 \value{
-A list of data frames, orginal column names from the provided data frame intact.
+A list of data frames, original column names from the provided data frame intact.
 }
 \description{
 Take one data frame and break it into individual data frames given a variable.
 }
 \details{
-The orignal data frame will be broken up into several different data frames based on the categorical column provided. The new data frames will be stored in a list.
+The original data frame will be broken up into several different data frames based on the categorical column provided. The new data frames will be stored in a list.
 }
 \examples{
 df_break_by(data21, "crown_position")
