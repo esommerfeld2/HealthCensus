@@ -17,7 +17,7 @@ sample years.
 }
 \description{
 `ind_tree_id()` links data in the datasets by individual tree ID (`stem_tag`) to track
-indiviual tree health over the span of the study. Extracts each individual tree record and allows users to view
+individual tree health over the span of the study. Extracts each individual tree record and allows users to view
 how a tree's health indices change over the 2021–2024 period. Ideally used after the `comb_frame()` function.
 }
 \examples{

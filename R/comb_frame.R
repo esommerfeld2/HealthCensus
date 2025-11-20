@@ -17,6 +17,6 @@
 #' four years, with a new column of the categorical variable `year`.
 #'
 #' @examples
-#' all_data <- comb_frame(data21, data22, data23, data24)
+#' comb_frame(data21, data22, data23, data24)
 #'
-comb_frame<- function(df, x){}
+comb_frame<- function(data21, data22, data23, data24){}

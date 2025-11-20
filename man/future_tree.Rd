@@ -7,7 +7,7 @@
 future_tree(data, stem_tag, method = "mean_prob")
 }
 \arguments{
-\item{data}{A data frame containing the complete tree dataset}
+\item{all_data}{A data frame containing the complete tree dataset}
 
 \item{stem_tag}{The individual tree ID}
 

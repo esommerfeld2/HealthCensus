@@ -17,3 +17,7 @@ A tibble with two columns, the first of which will contain the names of the leve
 \description{
 Calculates total number of trees for each level of a given categorical variable from the dataset for any given year between 2021-2024.
 }
+\examples{
+sum_trees(data23, "species")
+
+}
