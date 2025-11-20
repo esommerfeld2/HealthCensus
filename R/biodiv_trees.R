@@ -9,59 +9,49 @@
 #' @export
 #'
 #' @examples
-#' # load data
-#' df24 <- data24
+#' biodiv_trees(data24, index = "shannon")
 #'
-#' # Compute biodiversity
-#' results <- biodiv_trees(df, index = "shannon")
-#'
-#' head(results)
-#' }
 biodiv_trees <- function(data,
                          index = "shannon") {
-
-  if (!requireNamespace("dplyr")) stop("Package 'dplyr' required.")
-  if (!requireNamespace("tidyr")) stop("Package 'tidyr' required.")
-  if (!requireNamespace("vegan")) stop("Package 'vegan' required.")
-
-  library(dplyr)
-  library(tidyr)
-  library(vegan)
-
-  # create matrix of abundance of species per quad
-  species_matrix <- data |>
-    group_by(quadrat, species) |>
-    summarise(n = n(), .groups = "drop") |>
-    pivot_wider(names_from = species, values_from = n, values_fill = 0)
-
-  quad_ids <- species_matrix$quadrat
-  species_only <- species_matrix[, -1]
-
-  # select biodiversity index
-  if (index == "shannon") {
-    biodiv <- diversity(species_only, index = "shannon")
-  } else if (index == "simpson") {
-    biodiv <- diversity(species_only, index = "simpson")
-  } else if (index == "species") {
-    biodiv <- specnumber(species_only)
-  } else {
-    stop("Index must be one of: 'shannon', 'simpson', 'species'")
-  }
-
-  biodiv_df <- data.frame(
-    quadrat = quad_ids,
-    biodiversity = biodiv
-  )
-
-  # merge index calculation back to original dataset
-  merge <- data |>
-    left_join(biodiv_df, by = "quadrat") |>
-    group_by(quadrat) |>
-    mutate(
-      mean_crown_living_quadrat = mean(percentage_of_crown_living, na.rm = TRUE),
-      mean_crown_intact_quadrat = mean(percentage_of_crown_intact, na.rm = TRUE)
-    ) |>
-    ungroup()
-
-  return(merge)
+  #
+  # if (!requireNamespace("dplyr")) stop("Package 'dplyr' required.")
+  # if (!requireNamespace("tidyr")) stop("Package 'tidyr' required.")
+  # if (!requireNamespace("vegan")) stop("Package 'vegan' required.")
+  #
+  # # create matrix of abundance of species per quad
+  # species_matrix <- data |>
+  #   group_by(quadrat, species) |>
+  #   summarise(n = n(), .groups = "drop") |>
+  #   pivot_wider(names_from = species, values_from = n, values_fill = 0)
+  #
+  # quad_ids <- species_matrix$quadrat
+  # species_only <- species_matrix[, -1]
+  #
+  # # select biodiversity index
+  # if (index == "shannon") {
+  #   biodiv <- diversity(species_only, index = "shannon")
+  # } else if (index == "simpson") {
+  #   biodiv <- diversity(species_only, index = "simpson")
+  # } else if (index == "species") {
+  #   biodiv <- specnumber(species_only)
+  # } else {
+  #   stop("Index must be one of: 'shannon', 'simpson', 'species'")
+  # }
+  #
+  # biodiv_df <- data.frame(
+  #   quadrat = quad_ids,
+  #   biodiversity = biodiv
+  # )
+  #
+  # # merge index calculation back to original dataset
+  # merge <- data |>
+  #   left_join(biodiv_df, by = "quadrat") |>
+  #   group_by(quadrat) |>
+  #   mutate(
+  #     mean_crown_living_quadrat = mean(percentage_of_crown_living, na.rm = TRUE),
+  #     mean_crown_intact_quadrat = mean(percentage_of_crown_intact, na.rm = TRUE)
+  #   ) |>
+  #   ungroup()
+  #
+  # return(merge)
 }
