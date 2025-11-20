@@ -32,32 +32,47 @@ useful since the package utilizes real-world data over a span of recent
 years as a basis for our functions (data in R package).
 
 Here is a brief overview of our package functions and their primary
-usages: 1. field_means(): Takes the mean of a numeric variable, such as
-‘percentage_of_crown_living’ or ‘dbh’, grouped by a categorical variable
-such as ‘species’, ‘status’, or ‘crown_position’. 2. comb_frame():
-Combines the data frames from the four different years into one large
-dataset, cleans this new dataset, and creates a new column with the
-variable name ‘year’ which groups the data by year. 3. sum_trees():
-Calculates the total number of trees for each *level* of a given
-categorical variable. 4. summary_health_year(): Prints summary
-statistics for indices of tree health
-(e.g. ‘percentage_of_crown_intact’, ‘percentage_of_crown_living’) either
-across all four years, or for one specific year. Creates a data set for
-these summary statistics. 5. summary_health_species(): Enables
-species-specific analysis by tracking health indices across all 4 years
-and creating summary statistics grouped by user input of a specific
-species. 6. ind_tree_id(): Tracks health indices of one individual tree
-over the course of the 4 years based on user input of the specific tree
-ID (‘stem_tag’). 7. logistic_reg_health(): Conducts logistic regression
-based on ‘status’ variable which indicates whether tree is alive or
-dead. Can use various variables from the dataset based on user input to
-determine main factors for survival. 8. future_tree(): Predicts tree
-survival in future years based on probabilities of survival/measurements
-of tree health in previous years. 9. graph_trees(): Generates
-visualizations (graphs, barplots, scatterplots, etc) that plot indices
-of tree health. 10. biodiv_trees(): Tracks indices of tree health as a
-function of the quadrat a given tree is in to measure the impact of tree
-biodiversity on mortality.
+usages:
+
+1.  field_means(): Takes the mean of a numeric variable, such as
+    ‘percentage_of_crown_living’ or ‘dbh’, grouped by a categorical
+    variable such as ‘species’, ‘status’, or ‘crown_position’.
+
+2.  comb_frame(): Combines the data frames from the four different years
+    into one large dataset, cleans this new dataset, and creates a new
+    column with the variable name ‘year’ which groups the data by year.
+
+3.  sum_trees(): Calculates the total number of trees for each *level*
+    of a given categorical variable.
+
+4.  summary_health_year(): Prints summary statistics for indices of tree
+    health (e.g. ‘percentage_of_crown_intact’,
+    ‘percentage_of_crown_living’) either across all four years, or for
+    one specific year. Creates a data set for these summary statistics.
+
+5.  summary_health_species(): Enables species-specific analysis by
+    tracking health indices across all 4 years and creating summary
+    statistics grouped by user input of a specific species.
+
+6.  ind_tree_id(): Tracks health indices of one individual tree over the
+    course of the 4 years based on user input of the specific tree ID
+    (‘stem_tag’).
+
+7.  logistic_reg_health(): Conducts logistic regression based on
+    ‘status’ variable which indicates whether tree is alive or dead. Can
+    use various variables from the dataset based on user input to
+    determine main factors for survival.
+
+8.  future_tree(): Predicts tree survival in future years based on
+    probabilities of survival/measurements of tree health in previous
+    years.
+
+9.  graph_trees(): Generates visualizations (graphs, barplots,
+    scatterplots, etc) that plot indices of tree health.
+
+10. biodiv_trees(): Tracks indices of tree health as a function of the
+    quadrat a given tree is in to measure the impact of tree
+    biodiversity on mortality.
 
 ## Installation
 
