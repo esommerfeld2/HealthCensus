@@ -16,6 +16,7 @@ biodiv_trees <- function(data,
   #To get rid of warnings about our parameters
   data2 <-data
   index2 <- index
+  vegan::diversity(c(1, 2, 3))
   #
   # if (!requireNamespace("dplyr")) stop("Package 'dplyr' required.")
   # if (!requireNamespace("tidyr")) stop("Package 'tidyr' required.")
