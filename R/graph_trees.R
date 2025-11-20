@@ -29,7 +29,6 @@ graph_trees <- function(data,
   if (!requireNamespace("ggplot2"))
     stop("Package 'ggplot2' is required.")
 
-  library(ggplot2)
 
   # graph types
   if (graph_type == "crown_position") {

@@ -18,4 +18,7 @@
 #' @examples
 #' ind_tree_id(all_data, stem_tag = 174002)
 #'
-ind_tree_id<- function(all_data, stem_tag){}
+ind_tree_id<- function(all_data, stem_tag){
+  all_data2 <- all_data
+  stem_tag2 <- stem_tag
+}

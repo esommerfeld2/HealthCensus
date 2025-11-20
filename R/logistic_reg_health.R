@@ -20,6 +20,7 @@
 #' logistic_reg_health(data24, "species")
 #'
 logistic_reg_health <- function(df, x=NULL, y= NULL, z= NULL){
+  df2 <- df
   #Step One: create the null model
 
   #if(x == NULL & y == NULL & z== NULL){

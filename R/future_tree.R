@@ -17,4 +17,9 @@
 #'
 #' @examples
 #' future_tree(all_data, stem_tag = 174002)
-future_tree<-function(all_data, stem_tag, method){}
+future_tree<-function(all_data, stem_tag, method){
+  #To get rid of warnings about our parameters
+  all_data2 <- all_data
+  stem_tag2 <- stem_tag
+  method2 <- method
+}

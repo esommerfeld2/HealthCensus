@@ -12,7 +12,10 @@
 #' biodiv_trees(data24, index = "shannon")
 #'
 biodiv_trees <- function(data,
-                         index = "shannon") {
+                        index = "shannon") {
+  #To get rid of warnings about our parameters
+  data2 <-data
+  index2 <- index
   #
   # if (!requireNamespace("dplyr")) stop("Package 'dplyr' required.")
   # if (!requireNamespace("tidyr")) stop("Package 'tidyr' required.")

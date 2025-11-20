@@ -20,5 +20,8 @@
 #'
 field_means <-function(data, x, y)
 {
-  mean(x)
+  #To get rid of warnings about our parameters
+  data2 <- data
+  x2 <- x
+  y2 <- y
 }

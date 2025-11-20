@@ -19,4 +19,10 @@
 #' @examples
 #' comb_frame(data21, data22, data23, data24)
 #'
-comb_frame<- function(data21, data22, data23, data24){}
+comb_frame<- function(data21, data22, data23, data24){
+  #To get rid of warnings about our parameters
+  data212 <- data21
+  data222<- data22
+  data232 <- data23
+  data242 <- data24
+}
