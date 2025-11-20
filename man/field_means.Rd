@@ -7,11 +7,11 @@
 field_means(data, x, y)
 }
 \arguments{
+\item{data}{A data frame with numeric data variables from the tree dataset}
+
 \item{x}{A string naming the numeric variable to take the mean from}
 
 \item{y}{A string naming the grouping categorical variable}
-
-\item{data}{A data frame with numeric data variables from the tree dataset}
 }
 \value{
 A data frame a one row for each level of `y` (the categorical variable) containing the mean of `x` (the numeric variable)

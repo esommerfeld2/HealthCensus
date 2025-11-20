@@ -10,15 +10,6 @@
 #' @examples
 #' sum_trees(data23, "species")
 #'
-#' # use to create a visualization
-#' library(ggplot2)
-#' sum_trees(data23, "species) |>
-#'   ggplot(aes(x = Categorical Variable, y = n)) +
-#'   geom_col() +
-#'   labs(title = "Number of Trees per Species",
-#'   x = "Species",
-#'   y = "Count") +
-#'   theme_minimal()
 sum_trees <- function(data, cat_var) {
   if (!requireNamespace("dplyr")) {
     stop("Package 'dplyr' is required but not installed.")

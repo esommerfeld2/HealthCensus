@@ -20,3 +20,7 @@ Calculates tree biodiversity by quadrat using data on the species composition pe
 \details{
 The function computes the abundance of tree species per quadrat and creates a matrix out of these values. Then, based on the type of biodiversity index that the user selects, it calculates that index for each quadrat and merges this biodiversity index back into the original dataset (data). It then computes the averages of percentage_crown_living and percentage_crown_intact as measures of tree health and mortality at the quadrat level.
 }
+\examples{
+biodiv_trees(data24, index = "shannon")
+
+}

@@ -8,7 +8,7 @@
 #' @usage
 #' future_tree(data, stem_tag, method = "mean_prob")
 #'
-#' @param data A data frame containing the complete tree dataset
+#' @param all_data A data frame containing the complete tree dataset
 #' @param stem_tag The individual tree ID
 #' @param method statistical prediction method
 #'
@@ -17,4 +17,4 @@
 #'
 #' @examples
 #' future_tree(all_data, stem_tag = 174002)
-future_tree<- function(df, x){}
+future_tree<-function(all_data, stem_tag, method){}

@@ -18,7 +18,7 @@
 #' @examples
 #' field_means(hf_data, x = "dbh", y = "species")
 #'
-field_means <-function(x, y,...)
+field_means <-function(data, x, y)
 {
   mean(x)
 }
