@@ -4,4 +4,5 @@ test_that("sum_trees works", {
 #   result_status <- sum_trees(test_data, "")
    # expect_equal(result_status$n))
    # expect_equal(result_status$Categorical))
+  #helpppppp
  })
