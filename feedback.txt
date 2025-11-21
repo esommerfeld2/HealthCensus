@@ -1,0 +1,20 @@
+Ella, Rose, and Catherine, excellent job on the package so far! You all have made considerable progress on the project, with the basic framework in place. You did have 2 notes come up on my end -- associated with minor things (just make sure to fix those details, which I've described below.)
+
+For the second checkpoint, definitely try to get the basic functionality of the whole process to work so you're able to run a logistic regression (for example). I think your focus will shift to more technical and methodological procedures, which will rely a lot on functions from potential packages. Nonetheless, you're mostly past the package setup, and that's a good positive.
+
+These are some of the notes I got from my check, which just stemmed from using Data instead of data, as well as one undefined function/variable.
+
+❯ checking top-level files ... NOTE
+  Non-standard file/directory found at top level:
+    'Data'
+
+❯ checking R code for possible problems ... [12s] NOTE
+  summary_health: no visible binding for global variable 'status'
+  Undefined global functions or variables:
+    status
+
+Some other suggestions/things to keep in mind going into the second checkpoint:
+
+- I think it may be beneficial to merge the four data__.Rd files into one if possible, especially because of the redundancy of information.
+- There seems to be a bunch of NAs in the final data frame when using the summary health function. Definitely try to determine a way to proceed with the NAs -- either add a note about the NAs or strip them entirely when printing the data out.
+- For the logistic regression function, you may be better off having an input that contains all possible predictors in a single data frame and another input with the response.
