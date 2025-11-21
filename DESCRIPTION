@@ -29,6 +29,8 @@ BugReports: https://github.com/esommerfeld2/HealthCensus/issues
 Depends: 
     R (>= 3.5)
 Suggests: 
+    knitr,
+    rmarkdown,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Imports:
@@ -36,3 +38,4 @@ Imports:
     ggplot2,
     tidyr,
     vegan
+VignetteBuilder: knitr

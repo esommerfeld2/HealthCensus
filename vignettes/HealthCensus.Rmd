@@ -1,0 +1,67 @@
+---
+title: "HealthCensus Package Tutorial"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{HealthCensus Package Tutorial}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+  
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(HealthCensus)
+```
+
+## Introduction
+
+The `HealthCensus` package provides 4 years of tree health data with tools to assess biodiversity, general health, and predict future health 
+
+### Loading the Data
+
+This package includes the Harvard Forest data sets for 2021-2024, which can be loaded individually.
+(insert code to load each data set for 2021-2024 individually)
+
+Some example variables from the data set are:
+  - Stem tag(individual tree IDs)
+- Species
+- DBH (diameter at breast height)
+- Health
+- Status (alive/dead)
+- Year
+
+### Working across Years
+
+This package provides the data separated by year, but the function `comb_frame()` allows for these years to combine into one data set.
+
+### Calculating Summary Statistics
+
+calculates the mean of a numeric variable (like DBH, percentage of crown living, etc.) grouped by a categorical variable (like the species, crown position, or status).
+
+### Individual Tree Observations
+
+The `ind_tree_id()` function pulls all observations for one specific treee from the dataset. This can be applied after using the `comb_frame()` function to track a tree over the course of the study.
+
+
+### Predicting Future Tree Health
+
+The `future_ttree()' function provides a prediction of whether the tree will survive next year based on previous health values.
+
+### Visualization Example
+
+
+
+### Multiple Function Usage
+
+
+
+## Conclusion
+
+The `HealthCensus` package provides several tools and a set of experimental data that could prove useful to researchers looking to understand population data over time. It provides frameworks for simple summary statistics, predictive models, and biodiversity metrics to apply to other sets of data as well. It is designed to be used for ecological analysis but also is accessible for all levels of bioinformatics experience.
