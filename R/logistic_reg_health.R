@@ -66,10 +66,3 @@ logistic_reg_health <- function(df, x=NULL, y= NULL, z= NULL){
   #return the model with the lowest AIC
 
 }
-
-# test <- function(y= NULL, z= NULL){
-#   print(y)
-#   print(z)
-# }
-# test(10, 12)
-# test(10)

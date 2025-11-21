@@ -14,9 +14,9 @@
 #'
 #' @return
 #' A data frame a one row for each level of `y` (the categorical variable) containing the mean of `x` (the numeric variable)
-#'
+#' @export
 #' @examples
-#' field_means(hf_data, x = "dbh", y = "species")
+#' field_means(data21, x = "dbh", y = "species")
 #'
 field_means <-function(data, x, y)
 {

@@ -21,6 +21,6 @@ individual tree health over the span of the study. Extracts each individual tree
 how a tree's health indices change over the 2021–2024 period. Ideally used after the `comb_frame()` function.
 }
 \examples{
-ind_tree_id(all_data, stem_tag = 174002)
+ind_tree_id(data21, stem_tag = 174002)
 
 }

@@ -7,9 +7,9 @@
 sum_trees(data, cat_var)
 }
 \arguments{
-\item{data:}{A data frame for a given year between 2021-2024 containing tree health census data.}
+\item{data}{A data frame for a given year between 2021-2024 containing tree health census data.}
 
-\item{cat_var:}{A character string which gives the name of the chosen categorical variable for which the number of trees per level will be counted, such as 'species', 'status', 'fad', etc.}
+\item{cat_var}{A character string which gives the name of the chosen categorical variable for which the number of trees per level will be counted, such as 'species', 'status', 'fad', etc.}
 }
 \value{
 A tibble with two columns, the first of which will contain the names of the levels of the selected categorical variable, and the second of which contains the sum values for each level of the categorical variable.
