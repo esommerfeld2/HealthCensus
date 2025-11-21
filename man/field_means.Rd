@@ -22,6 +22,6 @@ percentage of crown living, etc.) grouped by a categorical variable (like the
 species, crown position, or status).
 }
 \examples{
-field_means(hf_data, x = "dbh", y = "species")
+field_means(data21, x = "dbh", y = "species")
 
 }

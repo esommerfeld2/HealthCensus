@@ -11,11 +11,11 @@ graph_trees(
 )
 }
 \arguments{
-\item{data:}{A data frame containing tree health metrics, either at the individual tree level or at the quadrat level depending on whether or not the output of the biodiv_trees() function is used.}
+\item{data}{A data frame containing tree health metrics, either at the individual tree level or at the quadrat level depending on whether or not the output of the biodiv_trees() function is used.}
 
-\item{graph_type:}{A character string indicating which type of plot to generate.}
+\item{graph_type}{A character string indicating which type of plot to generate.}
 
-\item{health_tree:}{Character string specifying which variable that constitutes an indice of tree health to plot, with the default variable in this function being percentage_crown_living.}
+\item{health_tree}{Character string specifying which variable that constitutes an indice of tree health to plot, with the default variable in this function being percentage_crown_living.}
 }
 \value{
 A ggplot2 graphics object that prints the graph/plot to the user screen.
@@ -27,12 +27,6 @@ Generates visualizations from the dataset for a given year between 2021-2024. Ca
 This function is designed to help users more efficiently explore relationships between key variables like biodiversity, crown condition (percentage intact and percentage living, for example), and categorical variables such as mortality status and factors associated with death (fad). ggplot2 is required to run this function.
 }
 \examples{
-# biodiversity plot
-df_23 <- data23
-biodiv_df <- biodiv_trees(data23)
-
-graph_trees(biodiv_df, graph_type = "biodiv_mortality")
-
-# mortality status barplot
-graph_trees(df_23, graph_type = "status_bar")
+graph_trees(data21, graph_type = "biodiv_mortality")
+graph_trees(data23, graph_type = "status_bar")
 }

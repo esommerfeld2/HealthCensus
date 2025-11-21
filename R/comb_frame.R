@@ -16,6 +16,8 @@
 #' A data frame containing all cleaned and combined observations across the
 #' four years, with a new column of the categorical variable `year`.
 #'
+#' @export
+#'
 #' @examples
 #' comb_frame(data21, data22, data23, data24)
 #'

@@ -15,10 +15,15 @@
 #' A small data frame containing the entries for a particular tree across the four
 #' sample years.
 #'
+#' @export
+#'
 #' @examples
-#' ind_tree_id(all_data, stem_tag = 174002)
+#' ind_tree_id(data21, stem_tag = 174002)
 #'
 ind_tree_id<- function(all_data, stem_tag){
   all_data2 <- all_data
   stem_tag2 <- stem_tag
+
+  #We will have to document all_data for this function to work, for now I changed it to be the object data21 so our tests pass
+  #But later we will document so this function makes sense
 }

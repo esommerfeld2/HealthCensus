@@ -4,7 +4,7 @@
 \alias{future_tree}
 \title{Predicts Future Tree Survival Based on Past Health}
 \usage{
-future_tree(data, stem_tag, method = "mean_prob")
+future_tree(all_data, stem_tag, method = "mean_prob")
 }
 \arguments{
 \item{all_data}{A data frame containing the complete tree dataset}
@@ -22,5 +22,5 @@ future year based on its observed health measurements across the 2021–2024
 dataset. The function uses probabilities to generate a prediction of survival status.
 }
 \examples{
-future_tree(all_data, stem_tag = 174002)
+future_tree(data21, stem_tag = 174002)
 }

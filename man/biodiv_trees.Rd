@@ -7,9 +7,9 @@
 biodiv_trees(data, index = "shannon")
 }
 \arguments{
-\item{data:}{A data frame containing tree-level census data from a given year from 2021-2024.}
+\item{data}{A data frame containing tree-level census data from a given year from 2021-2024.}
 
-\item{index:}{A character string specifying what kind of biodiversity index to calculate (shannon, simpson, or species richness).}
+\item{index}{A character string specifying what kind of biodiversity index to calculate (shannon, simpson, or species richness).}
 }
 \value{
 A data frame that appends the biodiversity index for a given quadrat to the original data frame. Also includes new columns for the mean percentage_crown_living and mean percentage_crown_intact biodiversity scores per quadrat.
