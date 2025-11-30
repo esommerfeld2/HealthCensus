@@ -20,15 +20,21 @@
 #'
 summary_health <- function(df, x){
 
-  #get the different levels of x
-  levelsOfColumn <- unique(df[[x]])
+  #check to make sure x is a column in df
+  if(is.null(df[[x]])){
+    stop("Column not found in data frame")
+  }
+
   #if x is a factor, sort by levels by the different levels hard coded into x
-  #STILL NEED TO DO
-  #FIX BY REMOVING ALL NAs
+  if(is.factor(df[[x]])){
+    levelsOfColumn <- levels(df[[x]])
+  }else{
+    levelsOfColumn <- unique(df[[x]])
+  }
 
   #Create final data frame
   statistic_names <- c("A_count", "AU_count", "DC_count", "DN_count", "DS_count",
-                       "NA_status_count", "mean_crown_living", "median_crown_living",
+                       "mean_crown_living", "median_crown_living",
                        "mean_crown_intact", "median_crown_intact")
   final_df <- as.data.frame(statistic_names)
 
@@ -38,18 +44,30 @@ summary_health <- function(df, x){
   #for each level, take summary statistics
   for(i in levelsOfColumn){
 
+    #get rid of nas
+    if(is.na(i)){
+      next
+    }
+
     #move counter
     count <- count + 1
 
     #Filter data
     status_stats <- df[df[[x]] == i, ]
 
+
     #Get the counts for each status
     final_stats_status <- status_stats |>
+      filter(!is.na(status)) |>
       group_by(status) |>
       summarise(
         count = n()
       )
+
+    #if there are less than 10 lines of data
+    if(sum(final_stats_status$count) < 10){
+      warning(paste0(i, " has less than 10 data points"))
+    }
 
     #Create column name based on where in the loop you are
     names(final_stats_status)[names(final_stats_status) == "count"] <- paste("result_for", x, as.character(i), sep = "_")
@@ -61,20 +79,19 @@ summary_health <- function(df, x){
         status == "AU" ~ "AU_count",
         status == "DC" ~ "DC_count",
         status == "DN" ~ "DN_count",
-        status == "DS" ~ "DS_count",
-        is.na(status) ~ "NA_status_count"
+        status == "DS" ~ "DS_count"
       )) |>
       select(-status)
 
     #Add to the final data set
     final_df <- final_df |>
-      left_join(final_stats_status)
+      left_join(final_stats_status, by = "statistic_names")
 
     #Adding in the mean and medians
-    final_df[7,count] <- mean(status_stats$percentage_of_crown_living, na.rm = TRUE)
-    final_df[8,count] <- median(status_stats$percentage_of_crown_living, na.rm = TRUE)
-    final_df[9,count] <- mean(status_stats$percentage_of_crown_intact, na.rm = TRUE)
-    final_df[10,count] <- median(status_stats$percentage_of_crown_intact, na.rm = TRUE)
+    final_df[6,count] <- mean(status_stats$percentage_of_crown_living, na.rm = TRUE)
+    final_df[7,count] <- median(status_stats$percentage_of_crown_living, na.rm = TRUE)
+    final_df[8,count] <- mean(status_stats$percentage_of_crown_intact, na.rm = TRUE)
+    final_df[9,count] <- median(status_stats$percentage_of_crown_intact, na.rm = TRUE)
 
   }
 
