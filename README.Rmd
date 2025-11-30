@@ -56,11 +56,12 @@ pak::pak("esommerfeld2/HealthCensus")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example where we demonstrate the ability of the function summary_health:
 
 ```{r example}
 library(HealthCensus)
-## basic example code
+# basic example code
+# gives you a summary of the health of trees at different crown positions
 summary_health(data21, "crown_position") 
-# gives you a summary of the health of trees at different crown positions 
+
 ```
