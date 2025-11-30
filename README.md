@@ -94,7 +94,7 @@ summary_health:
 library(HealthCensus)
 # basic example code
 # gives you a summary of the health of trees at different crown positions
-summary_health(data21, "crown_position") 
+summary_health(data21, "crown_position")
 #>       statistic_names result_for_crown_position_3 result_for_crown_position_1
 #> 1             A_count                   6261.0000                  1591.00000
 #> 2            AU_count                   2109.0000                  4154.00000
