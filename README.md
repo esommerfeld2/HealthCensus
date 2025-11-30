@@ -4,6 +4,7 @@
 # HealthCensus
 
 <!-- badges: start -->
+
 <!-- badges: end -->
 
 Our package will be built around data from Harvard Forest that measures
@@ -86,53 +87,42 @@ pak::pak("esommerfeld2/HealthCensus")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example where we demonstrate the ability of the function
+summary_health:
 
 ``` r
 library(HealthCensus)
-## basic example code
+# basic example code
+# gives you a summary of the health of trees at different crown positions
 summary_health(data21, "crown_position") 
-#> Joining with `by = join_by(statistic_names)`
-#> Joining with `by = join_by(statistic_names)`
-#> Joining with `by = join_by(statistic_names)`
-#> Joining with `by = join_by(statistic_names)`
-#> Joining with `by = join_by(statistic_names)`
-#> Joining with `by = join_by(statistic_names)`
-#>        statistic_names result_for_crown_position_3 result_for_crown_position_1
-#> 1              A_count                   6261.0000                  1591.00000
-#> 2             AU_count                   2109.0000                  4154.00000
-#> 3             DC_count                      2.0000                  1184.00000
-#> 4             DN_count                          NA                   200.00000
-#> 5             DS_count                    409.0000                  4001.00000
-#> 6      NA_status_count                   2007.0000                  2007.00000
-#> 7    mean_crown_living                     90.1597                    45.16302
-#> 8  median_crown_living                    100.0000                    45.00000
-#> 9    mean_crown_intact                     95.6929                    65.12814
-#> 10 median_crown_intact                    100.0000                    90.00000
-#>    result_for_crown_position_2 result_for_crown_position_4
-#> 1                   2436.00000                  2225.00000
-#> 2                   2215.00000                   494.00000
-#> 3                      6.00000                          NA
-#> 4                      1.00000                          NA
-#> 5                    854.00000                   332.00000
-#> 6                   2007.00000                  2007.00000
-#> 7                     74.16639                    82.13143
-#> 8                     93.00000                    96.00000
-#> 9                     87.94732                    95.34448
-#> 10                   100.00000                   100.00000
-#>    result_for_crown_position_5 result_for_crown_position_NA
-#> 1                    265.00000                           NA
-#> 2                     29.00000                           NA
-#> 3                           NA                           NA
-#> 4                           NA                           NA
-#> 5                     33.00000                           NA
-#> 6                   2007.00000                        30808
-#> 7                     83.88991                          NaN
-#> 8                     95.00000                           NA
-#> 9                     96.74618                          NaN
-#> 10                   100.00000                           NA
-```
-
-``` r
-# gives you a summary of the health of trees at different crown positions 
+#>       statistic_names result_for_crown_position_3 result_for_crown_position_1
+#> 1             A_count                   6261.0000                  1591.00000
+#> 2            AU_count                   2109.0000                  4154.00000
+#> 3            DC_count                      2.0000                  1184.00000
+#> 4            DN_count                          NA                   200.00000
+#> 5            DS_count                    409.0000                  4001.00000
+#> 6   mean_crown_living                     90.1597                    45.16302
+#> 7 median_crown_living                    100.0000                    45.00000
+#> 8   mean_crown_intact                     95.6929                    65.12814
+#> 9 median_crown_intact                    100.0000                    90.00000
+#>   result_for_crown_position_2 result_for_crown_position_4
+#> 1                  2436.00000                  2225.00000
+#> 2                  2215.00000                   494.00000
+#> 3                     6.00000                          NA
+#> 4                     1.00000                          NA
+#> 5                   854.00000                   332.00000
+#> 6                    74.16639                    82.13143
+#> 7                    93.00000                    96.00000
+#> 8                    87.94732                    95.34448
+#> 9                   100.00000                   100.00000
+#>   result_for_crown_position_5
+#> 1                   265.00000
+#> 2                    29.00000
+#> 3                          NA
+#> 4                          NA
+#> 5                    33.00000
+#> 6                    83.88991
+#> 7                    95.00000
+#> 8                    96.74618
+#> 9                   100.00000
 ```
