@@ -23,7 +23,7 @@ sum_trees <- function(data, cat_var) {
   # sum the number of trees for each level of the cat_var
   summed <- data |>
     group_by(.data[[cat_var]]) |>
-    summarize(n = n(), .groups = "drop")
+    summarize(n = n())
 
   # rename column
   names(summed)[1] <- "Categorical Variable"
