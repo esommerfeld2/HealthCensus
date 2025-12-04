@@ -17,26 +17,26 @@
 #' four years, with a new column of the categorical variable `year`.
 #'
 #' @export
-#'
+#' @import dplyr
 #' @examples
 #' comb_frame(data21, data22, data23, data24)
 #'
-comb_frame<- function(data21, data22, data23, data24){
-  #To get rid of warnings about our parameters
-  data212 <- data21
-  data222<- data22
-  data232 <- data23
-  data242 <- data24
-}
+# comb_frame<- function(data21, data22, data23, data24){
+#   #To get rid of warnings about our parameters
+#   data212 <- data21
+#   data222<- data22
+#   data232 <- data23
+#   data242 <- data24
+# }
 
 #safety checks?
-all_data <- function(data21, data22, data23, data24) {
+comb_frame <- function(data21, data22, data23, data24) {
   data21$year <- 2021
   data22$year <- 2022
   data23$year <- 2023
   data24$year <- 2024
 
-  dplyr::bind_rows(
+  all_data <- dplyr::bind_rows(
     data21,
     data22,
     data23,

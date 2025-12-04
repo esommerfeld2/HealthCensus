@@ -4,12 +4,12 @@
 \alias{ind_tree_id}
 \title{Links tree IDs to track individual tree information over the course of 4 years}
 \usage{
-ind_tree_id(all_data, stem_tag)
+ind_tree_id(all_data, stem_tag_number)
 }
 \arguments{
 \item{all_data}{The combined Harvard Forest dataset from `comb_frame()`}
 
-\item{stem_tag}{The individual tree ID}
+\item{stem_tag_number}{The individual tree ID}
 }
 \value{
 A small data frame containing the entries for a particular tree across the four
@@ -21,6 +21,7 @@ individual tree health over the span of the study. Extracts each individual tree
 how a tree's health indices change over the 2021–2024 period. Ideally used after the `comb_frame()` function.
 }
 \examples{
-ind_tree_id(data21, stem_tag = 174002)
+x <- comb_frame(data21, data22, data23, data24)
+ind_tree_id(x, stem_tag_number = 174002)
 
 }
