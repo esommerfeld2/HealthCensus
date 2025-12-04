@@ -20,10 +20,18 @@
 #' @examples
 #' ind_tree_id(data21, stem_tag = 174002)
 #'
-ind_tree_id<- function(all_data, stem_tag){
-  all_data2 <- all_data
-  stem_tag2 <- stem_tag
+#ind_tree_id<- function(all_data, stem_tag){
+ # all_data2 <- all_data
+ # stem_tag2 <- stem_tag
 
   #We will have to document all_data for this function to work, for now I changed it to be the object data21 so our tests pass
   #But later we will document so this function makes sense
+#}
+
+#safety checks?
+ind_tree_id <- function(all_data, stem_tag) {
+  data %>%
+    dplyr::filter(stem_tag == stem_tag)
+  return(ind_tree_id)
+
 }

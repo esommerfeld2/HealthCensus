@@ -28,3 +28,19 @@ comb_frame<- function(data21, data22, data23, data24){
   data232 <- data23
   data242 <- data24
 }
+
+#safety checks?
+all_data <- function(data21, data22, data23, data24) {
+  data21$year <- 2021
+  data22$year <- 2022
+  data23$year <- 2023
+  data24$year <- 2024
+
+  dplyr::bind_rows(
+    data21,
+    data22,
+    data23,
+    data24
+  )
+  return(all_data)
+}
