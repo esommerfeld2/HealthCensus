@@ -29,3 +29,45 @@ future_tree<-function(all_data, stem_tag, method = "mean_prob"){
   #or we can ask the best way to go about it since this data set is generated from another one of your functions
   #for now I changed the example so RMD passes but a better step should occur in the next stage!
 }
+
+#future_tree <- function(all_data, stem_tag, method = "mean_prob") {
+
+  # safety checks
+  #if (!all(c("year", "status") %in% names(all_data))) {
+#     stop("Data must contain 'year' and 'status'")
+#   }
+#
+#   if (nrow(all_data) < 2) {
+#     stop("At least two years of observations are necessary")
+#   }
+#
+#   #order all_data by year
+#   all_data <- all_data[order(all_data$year), ]
+#
+#   # convert alive/dead status to numeric (alive/alive unhealthy = 1, dead = 0)
+#   status_numeric <- ifelse(all_data$status == "A", 1, 0)
+#
+#   # create transitions: alive to alive?
+#   transitions <- data.frame(
+#     year_from = head(tree_data$year, -1),
+#     year_to = tail(tree_data$year, 1),
+#     alive_from = head(status_numeric, -1),
+#     alive_to = tail(status_numeric, 1)
+#   )
+#
+#   # calculate probability: P(alive_next | alive_current)
+#   survival_events <- transitions$alive_from == 1
+#   stayed_alive <- transitions$alive_to == 1 & transitions$alive_from == 1
+#
+#   if (sum(survival_events) == 0) {
+#     prob <- 0
+#   } else {
+#     prob <- sum(stayed_alive) / sum(survival_events)
+#   }
+#
+#   return(list(
+#     survival_probability = prob,
+#     transitions = transitions
+#   ))
+#   return(future_tree)
+# }
