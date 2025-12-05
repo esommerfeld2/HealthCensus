@@ -11,19 +11,19 @@ quad_species(df, species, most = TRUE)
 
 \item{species}{the species you want to find}
 
-\item{most}{defulat true, meaning you are getting quadrats with the most of that spieces}
+\item{most}{default true, meaning you are getting quadrats with the most of that spieces, false means get the quadrats with the least of that species}
 }
 \value{
-list of top 5 quadrats
+data frame of top 5 quadrats and counts of trees per quadrat
 }
 \description{
-WRITE
+This function takes a data frame, species of tree and finds the quadrats with the most or least of this species.
 }
 \details{
-WRITE
+Used to find quadrats with either the most or least of one species using counts. The data frame that is returned will contain the top 5 quadrats that meet this critera.
 }
 \examples{
-quad_species(data21, "SP", most = TRUE)
-quad_species(data22, "SP", most= FALSE)
+quad_species(data21, "querru", most = TRUE)
+quad_species(data22, "tsugca", most= FALSE)
 
 }
