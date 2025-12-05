@@ -1,8 +1,37 @@
 test_that("sum_trees works", {
-#   test_data <- data23(species = c("tsugca", "pinure", "querru", "piceab"), status = c(AU, A, DS))
-#   ## count by status
-#   result_status <- sum_trees(test_data, "")
-   # expect_equal(result_status$n))
-   # expect_equal(result_status$Categorical))
-  #helpppppp
- })
+   data <- data23 |>
+     filter(species == "pinure")
+
+   result <- sum_trees(data23, "species")
+   # test that counts match manually computed values
+   manual_counts <- data23 |>
+     filter(!is.na(species)) |>
+     group_by(species) |>
+     summarize(n=n()) |>
+     arrange(species)
+
+   # order 'data' the same way
+   result_ordered <- result |>
+     arrange('Categorical Variable')
+
+   # test that each row's n matches manual calculation
+   expect_equal(result_ordered$n,
+     manual_counts$n)
+
+   # test that column renaming is correct
+   expect_true("Categorical Variable" %in% names(result))
+   expect_false("species" %in% names(result))
+
+   # test that error is thrown if column is not in data frame ---
+   expect_error(sum_trees(data23, "height"))
+
+   # test that function does not break if dataset has only one category
+   data_one <- data23 |>
+     filter(species == "tsugca")   # only one level
+
+   single_result <- sum_trees(data_one, "species")
+
+   expect_equal(single_result$n, nrow(data_one))
+   expect_equal(nrow(single_result), 1)
+
+})
