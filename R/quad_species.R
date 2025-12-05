@@ -32,14 +32,14 @@ quad_species <- function(df, species, most = TRUE){
       group_by(.data[["quad"]]) |>
       summarise(
         counts=  n()
-      ) |> arrange(desc(counts)) |>
+      ) |> arrange(desc(.data[["counts"]])) |>
       slice(1:5)
   }else{
     df_sp_count <- df_sp |>
       group_by(.data[["quad"]]) |>
       summarise(
         counts=  n()
-      ) |> arrange(counts) |>
+      ) |> arrange(.data[["counts"]]) |>
       slice(1:5)
   }
 
