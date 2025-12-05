@@ -59,10 +59,9 @@ usages:
     course of the 4 years based on user input of the specific tree ID
     (‘stem_tag’).
 
-7.  logistic_reg_health(): Conducts logistic regression based on
-    ‘status’ variable which indicates whether tree is alive or dead. Can
-    use various variables from the dataset based on user input to
-    determine main factors for survival.
+7.  quad_species(): Takes a species and finds a quadrat with the most of
+    that species or least. Can be used to determine where to set up your
+    experiment if it depends on tree species.
 
 8.  future_tree(): Predicts tree survival in future years based on
     probabilities of survival/measurements of tree health in previous
