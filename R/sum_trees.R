@@ -24,6 +24,10 @@ sum_trees <- function(data, cat_var) {
   summed <- data |>
     group_by(.data[[cat_var]]) |>
     summarize(n = n())
+  # group_by(data, cat_var)
+  #"species" --> sym()
+  # 1) var <- sym(cat_var)
+  # 2) !!var
 
   # rename column
   names(summed)[1] <- "Categorical Variable"

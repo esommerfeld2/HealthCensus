@@ -76,4 +76,5 @@ graph_trees <- function(data,
   #
   # print(graph)
 }
+## make all of these separate functions
 ## could come up with idea to make plot for FAD? either way these are very rudimentary ideas
