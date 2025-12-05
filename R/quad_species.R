@@ -23,6 +23,11 @@ quad_species <- function(df, species, most = TRUE){
   #fitler for one speices
   df_sp <- df[df[["species"]] == species, ]
 
+  #check if data frame is empty
+  if(nrow(df_sp) == 0){
+    stop("That species is not in this data frame.")
+  }
+
   #extract the quadrat
   df_sp$quad <- substr(df_sp$quad_sub_quad, 1, 4)
 
