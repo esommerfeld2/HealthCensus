@@ -6,12 +6,12 @@ test_that("summary health works", {
   created_data <- summary_health(data21, "crown_position")
 
   #test that means match
-  expect_equal(created_data[6,2], mean(cp1$percentage_of_crown_living, na.rm = TRUE))
-  expect_equal(created_data[8,2], mean(cp1$percentage_of_crown_intact, na.rm = TRUE))
+  expect_equal(created_data[6,2], round(mean(cp1$percentage_of_crown_living, na.rm = TRUE), digits = 0))
+  expect_equal(created_data[8,2], round(mean(cp1$percentage_of_crown_intact, na.rm = TRUE), digits = 0))
 
   #test that medians match
-  expect_equal(created_data[7,2], median(cp1$percentage_of_crown_living, na.rm = TRUE))
-  expect_equal(created_data[9,2], median(cp1$percentage_of_crown_intact, na.rm = TRUE))
+  expect_equal(created_data[7,2], round(median(cp1$percentage_of_crown_living, na.rm = TRUE), digits = 0))
+  expect_equal(created_data[9,2], round(median(cp1$percentage_of_crown_intact, na.rm = TRUE), digits = 0))
 
   #test that counts add up
   sums_from_function <- apply(created_data[c(1:5), c(2:6)], 1, function(x) sum(x, na.rm = TRUE))

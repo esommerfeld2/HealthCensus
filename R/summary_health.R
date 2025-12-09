@@ -95,6 +95,10 @@ summary_health <- function(df, x){
 
   }
 
+  #round the results to make the output look nicer
+  final_df <- final_df |>
+    mutate_if(is.numeric, round)
+
   #Return the final dataframe
   return(final_df)
 
