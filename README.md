@@ -95,33 +95,33 @@ library(HealthCensus)
 # gives you a summary of the health of trees at different crown positions
 summary_health(data21, "crown_position")
 #>       statistic_names result_for_crown_position_3 result_for_crown_position_1
-#> 1             A_count                   6261.0000                  1591.00000
-#> 2            AU_count                   2109.0000                  4154.00000
-#> 3            DC_count                      2.0000                  1184.00000
-#> 4            DN_count                          NA                   200.00000
-#> 5            DS_count                    409.0000                  4001.00000
-#> 6   mean_crown_living                     90.1597                    45.16302
-#> 7 median_crown_living                    100.0000                    45.00000
-#> 8   mean_crown_intact                     95.6929                    65.12814
-#> 9 median_crown_intact                    100.0000                    90.00000
+#> 1             A_count                        6261                        1591
+#> 2            AU_count                        2109                        4154
+#> 3            DC_count                           2                        1184
+#> 4            DN_count                          NA                         200
+#> 5            DS_count                         409                        4001
+#> 6   mean_crown_living                          90                          45
+#> 7 median_crown_living                         100                          45
+#> 8   mean_crown_intact                          96                          65
+#> 9 median_crown_intact                         100                          90
 #>   result_for_crown_position_2 result_for_crown_position_4
-#> 1                  2436.00000                  2225.00000
-#> 2                  2215.00000                   494.00000
-#> 3                     6.00000                          NA
-#> 4                     1.00000                          NA
-#> 5                   854.00000                   332.00000
-#> 6                    74.16639                    82.13143
-#> 7                    93.00000                    96.00000
-#> 8                    87.94732                    95.34448
-#> 9                   100.00000                   100.00000
+#> 1                        2436                        2225
+#> 2                        2215                         494
+#> 3                           6                          NA
+#> 4                           1                          NA
+#> 5                         854                         332
+#> 6                          74                          82
+#> 7                          93                          96
+#> 8                          88                          95
+#> 9                         100                         100
 #>   result_for_crown_position_5
-#> 1                   265.00000
-#> 2                    29.00000
+#> 1                         265
+#> 2                          29
 #> 3                          NA
 #> 4                          NA
-#> 5                    33.00000
-#> 6                    83.88991
-#> 7                    95.00000
-#> 8                    96.74618
-#> 9                   100.00000
+#> 5                          33
+#> 6                          84
+#> 7                          95
+#> 8                          97
+#> 9                         100
 ```
