@@ -12,23 +12,23 @@
 #'
 sum_trees <- function(data, cat_var) {
 
-  # check that variable exists in dataset
+  # check that variable exists in dataset/matches name of column in dataset
   if (is.null(data[[cat_var]])) {
     stop("cat_var must match the name of a column in the dataset.")
   }
 
-  # converting cat_var into character object
-# var <- sym(cat_var)
-  # example: select(!!var)
+  # converting cat_var into a character object/symbol
+ var <- sym(cat_var)
 
-  # sum the number of trees for each level of the cat_var
+  # sum the number of trees for each level of the cat_var, use !! to evaluate var in group_by
   sums <- data |>
-    group_by(cat_var) |>
+    group_by(!!var) |>
     summarize(n = n())
 
-  # rename column
+  # rename column in subsetted data
   sums <- sums |>
-    rename("Categorical_Variable" = cat_var)
+    rename("Categorical_Variable" = !!cat_var)
 
   return(sums)
 }
+
