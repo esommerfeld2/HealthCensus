@@ -6,31 +6,29 @@
 #'
 #' @return A tibble with two columns, the first of which will contain the names of the levels of the selected categorical variable, and the second of which contains the sum values for each level of the categorical variable.
 #' @export
-#'
+#' @import dplyr
 #' @examples
 #' sum_trees(data23, "species")
 #'
 sum_trees <- function(data, cat_var) {
-  if (!requireNamespace("dplyr")) {
-    stop("Package 'dplyr' is required but not installed.")
-  }
 
   # check that variable exists in dataset
-  if (!cat_var %in% names(data)) {
+  if (is.null(data[[cat_var]])) {
     stop("cat_var must match the name of a column in the dataset.")
   }
 
+  # converting cat_var into character object
+# var <- sym(cat_var)
+  # example: select(!!var)
+
   # sum the number of trees for each level of the cat_var
-  summed <- data |>
-    group_by(.data[[cat_var]]) |>
+  sums <- data |>
+    group_by(cat_var) |>
     summarize(n = n())
-  # group_by(data, cat_var)
-  #"species" --> sym()
-  # 1) var <- sym(cat_var)
-  # 2) !!var
 
   # rename column
-  names(summed)[1] <- "Categorical Variable"
+  sums <- sums |>
+    rename("Categorical_Variable" = cat_var)
 
-  return(summed)
+  return(sums)
 }
