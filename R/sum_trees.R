@@ -27,7 +27,7 @@ sum_trees <- function(data, cat_var) {
 
   # rename column in subsetted data
   sums <- sums |>
-    rename("Categorical_Variable" = !!cat_var)
+    rename('Categorical Variable' = !!cat_var)
 
   return(sums)
 }
