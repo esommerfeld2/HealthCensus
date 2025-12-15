@@ -14,7 +14,7 @@ field_means(data, x, y)
 \item{y}{A string naming the grouping categorical variable}
 }
 \value{
-A data frame a one row for each level of `y` (the categorical variable) containing the mean of `x` (the numeric variable)
+A data frame a one row for each level of `y` (the categorical variable) containing the mean of `x` (the numeric variabl
 }
 \description{
 `field_means()` calculates the mean of a numeric variable (like DBH,
