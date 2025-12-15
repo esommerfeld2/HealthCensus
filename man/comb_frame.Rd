@@ -2,28 +2,27 @@
 % Please edit documentation in R/comb_frame.R
 \name{comb_frame}
 \alias{comb_frame}
-\title{Combine the data frames from multiple years into a single data frame}
+\title{Combine Annual Tree Data}
 \usage{
 comb_frame(data21, data22, data23, data24)
 }
 \arguments{
-\item{data21}{A data frame containing the tree data frame for year 2021}
+\item{data21}{Data frame for year 2021}
 
-\item{data22}{A data frame containing the tree data frame for year 2022}
+\item{data22}{Data frame for year 2022}
 
-\item{data23}{A data frame containing the tree data frame for year 2023}
+\item{data23}{Data frame for year 2023}
 
-\item{data24}{A data frame containing the tree data frame for year 2024}
+\item{data24}{Data frame for year 2024}
 }
 \value{
-A data frame containing all cleaned and combined observations across the
-four years, with a new column of the categorical variable `year`.
+A combined data frame with all observations across the four years and a new
+`year` column as a factor.
 }
 \description{
-`comb_frame()` merges the data frames from each year in the package into one
-data frame. It creates a seperate `year` categorical variable for the data across the years 2021-2024
+`comb_frame()` merges the data frames from 2021–2024 into a single data frame.
+It adds a categorical variable `year` to indicate the year of each observation.
 }
 \examples{
-comb_frame(data21, data22, data23, data24)
-
+combined <- comb_frame(data21, data22, data23, data24)
 }
