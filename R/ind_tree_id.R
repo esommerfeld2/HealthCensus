@@ -19,21 +19,25 @@
 #' @import dplyr
 #'
 #' @examples
-#' x <- comb_frame(data21, data22, data23, data24)
-#' ind_tree_id(x, stem_tag_number = 174002)
+#' all_data <- comb_frame(data21, data22, data23, data24)
+#' ind_tree_id(all_data, 10001)
 #'
-#ind_tree_id<- function(all_data, stem_tag){
- # all_data2 <- all_data
- # stem_tag2 <- stem_tag
 
-  #We will have to document all_data for this function to work, for now I changed it to be the object data21 so our tests pass
-  #But later we will document so this function makes sense
-#}
-
-#safety checks?
 ind_tree_id <- function(all_data, stem_tag_number) {
-  finaldf<- all_data %>%
-    dplyr::filter(.data[["stem_tag"]] == stem_tag_number)
-  return(finaldf)
 
+  if (!is.data.frame(all_data)) {
+    stop("Please input a data frame")
+  }
+
+  if (!"stem_tag" %in% names(all_data)) {
+    stop("Input must contain a 'stem_tag' column!")
+  }
+
+  finaldf <- dplyr::filter(all_data, .data[["stem_tag"]] == stem_tag_number)
+
+  if (nrow(finaldf) == 0) {
+    stop("No observations found for this particular stem_tag.")
+  }
+
+  return(finaldf)
 }
