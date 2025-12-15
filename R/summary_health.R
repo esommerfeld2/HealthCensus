@@ -58,8 +58,8 @@ summary_health <- function(df, x){
 
     #Get the counts for each status
     final_stats_status <- status_stats |>
-      filter(!is.na(.data[["status"]])) |>
-      group_by(.data[["status"]]) |>
+      filter(!is.na(status)) |>
+      group_by(status) |>
       summarise(
         count = n()
       )

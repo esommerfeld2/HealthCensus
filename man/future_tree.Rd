@@ -19,8 +19,10 @@ A numeric probability between 0-1 representing the likelihood of a specific tree
 \description{
 `future_tree()` estimates the chances of a tree surviving into a
 future year based on its observed health measurements across the 2021–2024
-dataset. The function uses probabilities to generate a prediction of survival status.
+data set. The function uses probabilities to generate a prediction of survival status based on status and varying levels of external damage/sickness observed.
 }
 \examples{
-future_tree(data21, stem_tag = 174002)
+# Generate the combined dataset
+all_data <- comb_frame(data21, data22, data23, data24)
+future_tree(all_data, stem_tag = 11769)
 }

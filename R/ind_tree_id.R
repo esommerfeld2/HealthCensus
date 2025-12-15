@@ -36,7 +36,7 @@ ind_tree_id <- function(all_data, stem_tag_number) {
   finaldf <- dplyr::filter(all_data, .data[["stem_tag"]] == stem_tag_number)
 
   if (nrow(finaldf) == 0) {
-    stop("No observations found for this particular stem_tag.")
+    stop("No observations found for this particular stem_tag id")
   }
 
   return(finaldf)
