@@ -29,18 +29,21 @@
 #   data242 <- data24
 # }
 
-#safety checks?
 comb_frame <- function(data21, data22, data23, data24) {
-  data21$year <- 2021
-  data22$year <- 2022
-  data23$year <- 2023
-  data24$year <- 2024
+#safety check to see if user put in dataframe
+  if (!all(sapply(list(data21, data22, data23, data24), is.data.frame))) {
+    stop("Only input data frames!")
+  }
+#safety check to see if data frames columns match before binding
+  cols <- list(names(data21), names(data22), names(data23), names(data24))
+  if (!all(sapply(cols, identical, cols[[1]]))) {
+    stop("Column names do not match")
+  }
 
-  all_data <- dplyr::bind_rows(
-    data21,
-    data22,
-    data23,
-    data24
-  )
-  return(all_data)
+  data21 <- dplyr::mutate(data21, year = 2021)
+  data22 <- dplyr::mutate(data22, year = 2022)
+  data23 <- dplyr::mutate(data23, year = 2023)
+  data24 <- dplyr::mutate(data24, year = 2024)
+
+  dplyr::bind_rows(data21, data22, data23, data24)
 }
