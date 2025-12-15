@@ -21,7 +21,7 @@ individual tree health over the span of the study. Extracts each individual tree
 how a tree's health indices change over the 2021–2024 period. Ideally used after the `comb_frame()` function.
 }
 \examples{
-x <- comb_frame(data21, data22, data23, data24)
-ind_tree_id(x, stem_tag_number = 174002)
+all_data <- comb_frame(data21, data22, data23, data24)
+ind_tree_id(all_data, 10001)
 
 }
