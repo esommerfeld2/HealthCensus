@@ -23,6 +23,7 @@
 #' @export
 #' @import ggplot2
 #' @import dplyr
+#' @import tidyverse
 #' @examples
 #' graph_trees(data21, graph_type = "biodiv_mortality")
 #' graph_trees(data23, graph_type = "status_bar")
