@@ -6,25 +6,34 @@
 \usage{
 graph_trees(
   data,
-  graph_type = c("crown_position", "biodiv_mortality", "health_dist", "status_bar"),
+  plot_type = c("crown_position", "biodiv_mortality", "health_dist", "status_bar"),
   health_tree = "percentage_crown_living"
 )
 }
 \arguments{
-\item{data}{A data frame containing tree health metrics, either at the individual tree level or at the quadrat level depending on whether or not the output of the biodiv_trees() function is used.}
+\item{data}{A data set containing tree health metrics, either at the individual tree level or at the quadrat level depending on whether or not the output of the biodiv_trees() function is used.}
 
-\item{graph_type}{A character string indicating which type of plot to generate.}
+\item{plot_type}{A character string indicating which type of plot to generate.}
 
-\item{health_tree}{Character string specifying which variable that constitutes an indice of tree health to plot, with the default variable in this function being percentage_crown_living.}
+\item{health_tree}{A character string specifying which variable that is a measure of tree health to plot, with the default variable in this function being percentage_crown_living.
+Valid variable inputs include 'percentage_of_crown_intact' and 'percentage_of_crown_living'.}
+
+\item{biodiv_metric}{A character string specifying which quadrat-level biodiversity index the user wishes to use to plot biodiversity vs. mortality ('biodiv_mortality' plot).
+Must be one of "shannon", "effective.sp", "richness", "max.H", or "evenness.J".
+Can only be used when plot_type = "biodiv_mortality".}
 }
 \value{
-A ggplot2 graphics object that prints the graph/plot to the user screen.
+A ggplot2 graphics object that prints the plot in the user's viewer window.
 }
 \description{
-Generates visualizations from the dataset for a given year between 2021-2024. Can include the apended quadrat-level biodiversity (output of biodiv_trees() function) if the user chooses. Automatically produces various user-friendly/easily-interpretable graphs based on the data that can be used to analyze tree health, mortality/status, and biodiversity. Users can select which type of graph which variables they would like to use to analyze the data.
+Generates visualizations from the dataset for a given year between 2021-2024.
+Can include the appended quadrat-level biodiversity indices and mortality rates by quadrat if the user chooses.
+Automatically produces various user-friendly graphs based on the data that can be used to analyze measures of tree health, mortality rate, and biodiversity.
+Users can select which type of plot from the five options built into the function they would like to use to analyze the data.
 }
 \details{
-This function is designed to help users more efficiently explore relationships between key variables like biodiversity, crown condition (percentage intact and percentage living, for example), and categorical variables such as mortality status and factors associated with death (fad). ggplot2 is required to run this function.
+Designed to help users more efficiently explore relationships between significant variables like biodiversity, mortality rate, crown condition (percentage intact and percentage living), status/mortality, and factors associated with death (fad).
+The ggplot2 package is required to run this function.
 }
 \examples{
 graph_trees(data21, graph_type = "biodiv_mortality")

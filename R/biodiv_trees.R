@@ -5,9 +5,9 @@
 #' @details Computes the abundance of tree species per quadrat based on the number of trees per species in each quadrat.
 #' Then, it calculates the biodiversity indices mentioned in the description for each quadrat using functions from the 'vegan' package and merges these values back into the original dataset.
 #' It also computes tree mortality rate per quadrat given the proportion of dead trees (as indicated by a value of either 'DN', 'DS', or 'DC' for the 'status' variable) compared to the total number of trees in that quadrat.
-#' @param data A data frame containing tree-level census data from a given year from 2021-2024.
+#' @param data A data set containing tree-level census data from a given year from 2021-2024.
 #'
-#' @return A data frame that appends various biodiversity indices and the tree mortality rate for a given quadrat to the original data frame.
+#' @return A data set that appends various biodiversity indices and the tree mortality rate for a given quadrat to the original data frame.
 #' @export
 #' @import vegan
 #' @import dplyr
