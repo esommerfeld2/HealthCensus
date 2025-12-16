@@ -77,7 +77,7 @@ usages:
 ## Installation
 
 You can install the development version of HealthCensus from
-[GitHub](https://github.com/) with:
+[GitHub](https://github.com/esommerfeld2/HealthCensus) with:
 
 ``` r
 # install.packages("pak")
@@ -91,7 +91,6 @@ summary_health:
 
 ``` r
 library(HealthCensus)
-# basic example code
 # gives you a summary of the health of trees at different crown positions
 summary_health(data21, "crown_position")
 #>       statistic_names result_for_crown_position_3 result_for_crown_position_1

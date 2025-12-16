@@ -22,6 +22,8 @@
 #' all_data <- comb_frame(data21, data22, data23, data24)
 #' future_tree(all_data, stem_tag = 11769)
 future_tree <- function(all_data, stem_tag, method = "mean_prob") {
+
+  #Handling possible errors
   treeodds <- all_data[all_data$stem_tag == stem_tag, ]
   if (nrow(treeodds) == 0) stop("No data found for this stem_tag")
   required_cols <- c("status", "wounded_main_stem", "canker_swelling_deformity", "rotting_trunk")
@@ -30,6 +32,7 @@ future_tree <- function(all_data, stem_tag, method = "mean_prob") {
   treeodds <- treeodds[order(treeodds$year), ]
   survival_prob <- numeric(nrow(treeodds))
 
+  #Calculating the probabilities
   for (i in seq_len(nrow(treeodds))) {
     treestate <- treeodds$status[i]
 
@@ -54,6 +57,7 @@ future_tree <- function(all_data, stem_tag, method = "mean_prob") {
     }
   }
 
+  #data frame of probs
   year_probs <- data.frame(
     year = treeodds$year,
     status = treeodds$status,
@@ -63,6 +67,7 @@ future_tree <- function(all_data, stem_tag, method = "mean_prob") {
     prob = survival_prob
   )
 
+  #final returned list
   list(
     stem_tag = stem_tag,
     last_year = treeodds$year[nrow(treeodds)],
