@@ -36,6 +36,6 @@ Designed to help users more efficiently explore relationships between significan
 The ggplot2 package is required to run this function.
 }
 \examples{
-graph_trees(data21, graph_type = "biodiv_mortality")
-graph_trees(data23, graph_type = "status_bar")
+graph_trees(data21, plot_type = "biodiv_mortality", biodiv_metric = "shannon")
+graph_trees(data23, plot_type = "health_dist", health_tree = "percentage_of_crown_living")
 }

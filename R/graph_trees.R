@@ -25,8 +25,8 @@
 #' @import dplyr
 #' @import tidyverse
 #' @examples
-#' graph_trees(data21, graph_type = "biodiv_mortality")
-#' graph_trees(data23, graph_type = "status_bar")
+#' graph_trees(data21, plot_type = "biodiv_mortality", biodiv_metric = "shannon")
+#' graph_trees(data23, plot_type = "health_dist", health_tree = "percentage_of_crown_living")
 graph_trees <- function(data,
                         plot_type = c("crown_position", "biodiv_mortality", "health_dist", "status_bar"),
                         health_tree = "percentage_crown_living") {
