@@ -2,13 +2,12 @@ test_that("sum_trees works", {
    data <- data23 |>
      filter(species == "pinure")
 
-   result <- sum_trees(data23, "species")
+   tree_sums <- sum_trees(data23, "species")
    # test that counts match manually computed values
    manual_counts <- data23 |>
      filter(!is.na(species)) |>
      group_by(species) |>
-     summarize(n=n()) |>
-     arrange(species)
+     summarize(n=n())
 
    # order 'data' the same way
    result_ordered <- result |>
@@ -22,7 +21,7 @@ test_that("sum_trees works", {
    expect_true("Categorical Variable" %in% names(result))
    expect_false("species" %in% names(result))
 
-   # test that error is thrown if column is not in data frame ---
+   # test that error is thrown if column is not in data frame
    expect_error(sum_trees(data23, "height"))
 
    # test that function does not break if dataset has only one category

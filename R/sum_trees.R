@@ -7,6 +7,7 @@
 #' @return A tibble with two columns, the first of which will contain the names of the levels of the selected categorical variable, and the second of which contains the sum values for each level of the categorical variable.
 #' @export
 #' @import dplyr
+#' @import tidyr
 #' @examples
 #' sum_trees(data23, "species")
 #'
