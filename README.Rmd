@@ -47,7 +47,7 @@ Our package will be built around data from Harvard Forest that measures the heal
 
 ## Installation
 
-You can install the development version of HealthCensus from [GitHub](https://github.com/) with:
+You can install the development version of HealthCensus from [GitHub](https://github.com/esommerfeld2/HealthCensus) with:
 
 ``` r
 # install.packages("pak")
@@ -60,7 +60,6 @@ This is a basic example where we demonstrate the ability of the function summary
 
 ```{r example}
 library(HealthCensus)
-# basic example code
 # gives you a summary of the health of trees at different crown positions
 summary_health(data21, "crown_position")
 ```

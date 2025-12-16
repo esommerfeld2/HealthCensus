@@ -25,16 +25,20 @@
 
 ind_tree_id <- function(all_data, stem_tag_number) {
 
+  #Checking for data frame
   if (!is.data.frame(all_data)) {
     stop("Please input a data frame")
   }
 
+  #Checking for stem_tag column
   if (!"stem_tag" %in% names(all_data)) {
     stop("Input must contain a 'stem_tag' column!")
   }
 
+  #Creating final data frame
   finaldf <- dplyr::filter(all_data, .data[["stem_tag"]] == stem_tag_number)
 
+  #Checking for stem_tag
   if (nrow(finaldf) == 0) {
     stop("No observations found for this particular stem_tag id")
   }
