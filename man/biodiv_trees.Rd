@@ -4,7 +4,7 @@
 \alias{biodiv_trees}
 \title{Calculating Tree Biodiversity Index at the Quadrat Level as Measure of Tree Mortality}
 \usage{
-biodiv_trees(data, index = "shannon")
+biodiv_trees(data)
 }
 \arguments{
 \item{data}{A data frame containing tree-level census data from a given year from 2021-2024.}
@@ -12,15 +12,15 @@ biodiv_trees(data, index = "shannon")
 \item{index}{A character string specifying what kind of biodiversity index to calculate (shannon, simpson, or species richness).}
 }
 \value{
-A data frame that appends the biodiversity index for a given quadrat to the original data frame. Also includes new columns for the mean percentage_crown_living and mean percentage_crown_intact biodiversity scores per quadrat.
+A data frame that appends various biodiversity indices for a given quadrat to the original data frame.
 }
 \description{
-Calculates tree biodiversity by quadrat using data on the species composition per quadrat. Merges the calculated biodiversity index back into the full dataset. Specifically takes abundance of species at the quadrat level to compute a biodiversity index (Shannon, Simpson, or species richness) and apends this index value to each tree in the given quadrat. It then computes summaries of indices of tree crown health and mortality rate, allowing easy visualization of the relationship between a tree's biodiversity index and its mortality.
+Calculates tree biodiversity by quadrat using data on the species composition per quadrat. Merges the calculated biodiversity index values back into the full dataset. Specifically takes abundance of species at the quadrat level to compute biodiversity index values (Shannon index, effective number of species, species richness, maximum possible diversity, Pielou's evenness J) and appends these index values to each tree in the given quadrat. It then computes summaries of indices of tree crown health and mortality rate, allowing easy visualization of the relationship between a tree's biodiversity index and its mortality.
 }
 \details{
-The function computes the abundance of tree species per quadrat and creates a matrix out of these values. Then, based on the type of biodiversity index that the user selects, it calculates that index for each quadrat and merges this biodiversity index back into the original dataset (data). It then computes the averages of percentage_crown_living and percentage_crown_intact as measures of tree health and mortality at the quadrat level.
+Computes the abundance of tree species per quadrat and creates a matrix out of these values. Then, it calculates the biodiversity indices mentioned in the description for each quadrat and merges these values back into the original dataset. It then computes the averages of percentage_crown_living and percentage_crown_intact as measures of tree health and mortality at the quadrat level.
 }
 \examples{
-biodiv_trees(data24, index = "shannon")
+biodiv_trees(data24)
 
 }
