@@ -13,7 +13,7 @@
 #'
 sum_trees <- function(data, cat_var) {
 
-  # check that variable exists in dataset/matches name of column in dataset
+  # check that variable exists in dataset
   if (is.null(data[[cat_var]])) {
     stop("cat_var must match the name of a column in the dataset.")
   }
