@@ -7,7 +7,8 @@
 graph_trees(
   data,
   plot_type = c("crown_position", "biodiv_mortality", "health_dist", "status_bar"),
-  health_tree = "percentage_crown_living"
+  health_tree = "percentage_crown_living",
+  biodiv_metric = c("shannon", "effective.sp", "richness", "max.H", "evenness.J")
 )
 }
 \arguments{

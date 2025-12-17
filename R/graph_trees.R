@@ -29,7 +29,8 @@
 #' graph_trees(data23, plot_type = "health_dist", health_tree = "percentage_of_crown_living")
 graph_trees <- function(data,
                         plot_type = c("crown_position", "biodiv_mortality", "health_dist", "status_bar"),
-                        health_tree = "percentage_crown_living") {
+                        health_tree = "percentage_crown_living",
+                        biodiv_metric = c("shannon", "effective.sp", "richness", "max.H", "evenness.J")) {
 # five plot types
  if (plot_type == "crown_position") {
   crown <- ggplot(data, aes(x = crown_position, y = percentage_crown_living)) +
@@ -43,15 +44,16 @@ graph_trees <- function(data,
  } else if (plot_type == "biodiv_mortality") {
    # allow users to select any one of the biodiversity indices calculated in the biodiv_trees() function
    valid_inputs <- c("shannon", "effective.sp", "richness", "max.H", "evenness.J")
-   if(!biodiv_metrics %in% valid_inputs) {
+   if(!biodiv_metric %in% valid_inputs) {
      # print error message if no valid biodiversity index type is chosen
      stop("The chosen biodiversity metric must be one of: ",
           paste(valid_inputs, collapse = ", "))
    }
    if(!"mortality_rate" %in% names(data)) {
-     # print error if mortality_rate variable not used
-     stop("Must include 'mortality_rate' variable at the quadrat level.")
+     # include mortality_rate variable at quadrat level
+     data <- biodiv_trees(data)
    }
+
     bio_mort <- ggplot(data, aes(x = .data[[biodiv_metric]], y = mortality_rate)) +
      geom_point() +
      geom_smooth(method = "lm", se = TRUE) +

@@ -12,7 +12,7 @@
 #' @import vegan
 #' @import dplyr
 #' @import tidyr
-#' @import tidyverse
+#' @import tibble
 #' @examples
 #' biodiv_trees(data24)
 #'
@@ -20,11 +20,11 @@ biodiv_trees <- function(data) {
 # remove missing species values from data, make sure each row/tree (n()) per species is summarized by quad_sub_quad (quadrat)
 mortality_trees <- data |>
 filter(!is.na(species)) |>
-mutate(dead = status %in% c("DS", "DN", "DC"))
+mutate(dead = .data[["status"]] %in% c("DS", "DN", "DC"))
 
 bio.long <- mortality_trees |>
 filter(!dead) |>
-group_by(quad_sub_quad, species) |>
+group_by(.data[["quad_sub_quad"]], .data[["species"]]) |>
 summarize(abundance = n())
 
 # convert to wide format
@@ -68,7 +68,7 @@ quadrat <- data |>
 
 # join bio.index to original data set
 # quad_sub_quad is the "key" used to match up the two datasets
-merged.df <- left_join(bio.index, mortality, by = "quadrat")
+merged.df <- left_join(bio.index, mortality, by = "quad_sub_quad")
 # return merged data frame with biodiversity indices and mortality per quadrat merged to original dataset
 return(merged.df)
 }
