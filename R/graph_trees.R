@@ -29,7 +29,7 @@
 #' graph_trees(data23, plot_type = "health_dist", health_tree = "percentage_of_crown_living")
 graph_trees <- function(data,
                         plot_type = c("crown_position", "biodiv_mortality", "health_dist", "status_bar"),
-                        health_tree = c("percentage_of_crown_living", "percentage_of_crown_intact"),
+                        health_tree = "percentage_of_crown_living",
                         biodiv_metric = c("shannon", "effective.sp", "richness", "max.H", "evenness.J")) {
 # five plot types
  if (plot_type == "crown_position") {
@@ -63,9 +63,18 @@ graph_trees <- function(data,
         title = paste("Relationship Between Biodiversity and Mortality using", biodiv_metric)) +
       theme_minimal()
     return(bio_mort)
-
+  # throws error if user selects column other than the variables specified in health_tree vector
   } else if (plot_type == "health_dist") {
-    if(!health_tree %in% names(data)) {
+    valid_health_inputs <- c("percentage_of_crown_living", "percentage_of_crown_intact")
+    if(!all(health_tree %in% valid_health_inputs)) {
+      stop("health_tree must be one of: ", paste(valid_health_inputs, collapse = ", "))
+    }
+    # throws error if user attempts to select more than one health_tree variable
+    if(length(health_tree) > 1) {
+      stop("Please select only one health_tree variable.")
+    }
+    # throws error if health_tree variable input made by user does not exist in the data set
+    if(!all(health_tree %in% names(data))) {
       stop("health_tree variable input not found in the dataset.")
     }
 
@@ -90,11 +99,12 @@ graph_trees <- function(data,
 
    return(mortality)
   } else if (plot_type == "fad_dist") {
+    # separates observations with multiple levels of the fad variable into distinct rows
     fad_dist <- data |>
       filter(!is.na(.data[["fad"]])) |>
       separate_rows("fad", sep = ", \\s*")
 
-    fad_dist |>
+    fad <- fad_dist |>
       ggplot(aes(x = .data[["fad"]])) +
       geom_bar() +
       labs(
@@ -103,7 +113,7 @@ graph_trees <- function(data,
         title = "Frequency of Factors Associated with Tree Death") +
       theme_minimal()
 
-    return(fad_dist)
+    return(fad)
   }
     else {
    stop("Invalid plot type. Choose from: 'crown_position', 'biodiv_mortality',
