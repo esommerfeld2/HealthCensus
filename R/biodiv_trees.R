@@ -12,6 +12,7 @@
 #' @import vegan
 #' @import dplyr
 #' @import tidyr
+#' @import tidyverse
 #' @examples
 #' biodiv_trees(data24)
 #'
