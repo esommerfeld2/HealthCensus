@@ -75,13 +75,13 @@ summary_health <- function(df, x){
     #Rename everything to match
     final_stats_status <- final_stats_status |>
       mutate(statistic_names = case_when(
-        status == "A" ~ "A_count",
-        status == "AU" ~ "AU_count",
-        status == "DC" ~ "DC_count",
-        status == "DN" ~ "DN_count",
-        status == "DS" ~ "DS_count"
+        .data[["status"]] == "A" ~ "A_count",
+        .data[["status"]] == "AU" ~ "AU_count",
+        .data[["status"]] == "DC" ~ "DC_count",
+        .data[["status"]] == "DN" ~ "DN_count",
+        .data[["status"]] == "DS" ~ "DS_count"
       )) |>
-      select(-status)
+      select(-.data[["status"]])
 
     #Add to the final data set
     final_df <- final_df |>
