@@ -49,8 +49,8 @@ graph_trees <- function(data,
      stop("The chosen biodiversity metric must be one of: ",
           paste(valid_inputs, collapse = ", "))
    }
-   if(!.data[["mortality_rate"]] %in% names(data)) {
-     # include mortality_rate variable at quadrat level
+   if(!"mortality_rate" %in% names(data)) {
+     # include mortality rate variable computed from  at quadrat level
      data <- biodiv_trees(data)
    }
 
@@ -92,7 +92,7 @@ graph_trees <- function(data,
   } else if (plot_type == "fad_dist") {
     fad_dist <- data |>
       filter(!is.na(.data[["fad"]])) |>
-      separate_rows(fad, sep = ", \\s*")
+      separate_rows("fad", sep = ", \\s*")
 
     fad_dist |>
       ggplot(aes(x = .data[["fad"]])) +
