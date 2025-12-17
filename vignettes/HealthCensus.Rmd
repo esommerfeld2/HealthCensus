@@ -22,46 +22,141 @@ library(HealthCensus)
 
 ## Introduction
 
-The `HealthCensus` package provides 4 years of tree health data with tools to assess biodiversity, general health, and predict future health 
+The `HealthCensus` package provides tools to assess biodiversity, general health, and predict future health. It features 4 years of cleaned tree health data from the Harvard Forest between years 2021-2024. This package is intended for students and researchers with an interest in ecology, who may have less experience working with R. It features simpler functions that can be adapted by users to fit their needs. This package encourages users to better understand the pipeline from raw data to a clean, statistically analyzed dataset, while promoting reproducible and interpretable ecological analysis.
+
+### Typical Workflow
+
+The typical workflow for this function might look something like this, but it can vary depending on a user's needs and experience with R.
+
+1. Load the data as a single year or range of years
+2. Look at summary statistics using `field_means()` or `summary_health()`
+3. Track individual trees using `ind_tree_id()`
+4. Predict future individual tree's survival with `future_tree()`
+5. Visualize trends and compare across species, years, or other factors using 'graph_trees()'
 
 ### Loading the Data
 
-This package includes the Harvard Forest data sets for 2021-2024, which can be loaded individually.
-(insert code to load each data set for 2021-2024 individually)
+The `HealthCensus` package includes cleaned tree health census data from the Harvard Forest for four years, 2021 through 2024. Each year is provided as a separate data frame, which allows users to explore the data either within a single year or across multiple years.
 
-Some example variables from the data set are:
-  - Stem tag(individual tree IDs)
-- Species
-- DBH (diameter at breast height)
-- Health
-- Status (alive/dead)
-- Year
+The data sets can be loaded directly after attaching the package.
+
+```{r}
+# Load individual data sets for each year
+data("data21")
+data("data22")
+data("data23")
+data("data24")
+```
+
+Each row in the data set represents a tree observation and includes variables such as species identity, diameter at breast height (DBH), crown conditions, and health status classifications. Each tree has a unique `stem_tag` identifier that carries over from year to year.
 
 ### Working across Years
 
-This package provides the data separated by year, but the function `comb_frame()` allows for these years to combine into one data set.
+The default data included in `HealthCensus` are provided as separate data sets for each year to preserve the structure of the original field observations. However, many statistical analyses and ecological questions require monitoring populations and individuals across time.
+
+To support a more applicable analysis, the `comb_frame()` function combines the individual data sets into a single data frame, while adding a `year` column to identify observations from varying census years.
+
+```{r}
+# Combine annual datasets into one data frame
+all_data <- comb_frame(data21, data22, data23, data24)
+
+# View the first few rows
+head(all_data)
+```
+
+The resulting dataset contains all observations from 2021–2024, with a new `year` variable indicating the census year of each record. This can allow for users to:
+
+- Track individual trees over time using `stem_tag`
+- Compare tree health to other years
+- Apply summary or predictive functions to multiple years of data
+
+Users still have the option to work with the individual years, but they can also work with a larger, combined data set depending on their needs.
 
 ### Calculating Summary Statistics
 
-calculates the mean of a numeric variable (like DBH, percentage of crown living, etc.) grouped by a categorical variable (like the species, crown position, or status).
+Ecological data sets, especially studies that focus on a large population, are more interpretative when summarized by groups. The `field_means()` function calculates the mean of a numeric variable grouped by a categorical variable. This allows for users to explore patterns across species, quadrant, or other categorical variables
+
+```{r}
+# Calculate mean diameter grouped by species
+field_means(data24, x = "dbh", y = "species")
+
+```
+
+This function returns a data frame where each row represents one level of the grouping variable (`species` in this example), along with the mean value of the selected numeric variable (`dbh`).
+
+These summaries can compare growth patterns, assess differences among species, or provide information for further statistical analyses. 
+
+It can also be applied to the 'all_data' data frame for a more expansive summary across all of the years.
+
+```{r}
+# Mean percentage of crown living by year
+field_means(all_data,x = "percentage_of_crown_living", y = "year"
+)
+```
+
+This output summarizes data across all four years rather than a single year. Viewing the combined data provides more context for interpretations of individual years, since the four-year summary can serve as a baseline for these comparisons.
+
 
 ### Individual Tree Observations
 
-The `ind_tree_id()` function pulls all observations for one specific treee from the dataset. This can be applied after using the `comb_frame()` function to track a tree over the course of the study.
+From here, users might be interested in looking more closely at specific trees within the population. The 'ind_tree_id()' function extracts all recorded observations for a single tree from the data set by the 'stem_tag' variable. When used on the 'all_data' frame, this function lets users track an individual tree’s overall health, growth, and status across multiple years of the study.
 
+```{r}
+# Combine all years into one dataset
+all_data <- comb_frame(data21, data22, data23, data24)
+
+# Pull observations for a single tree
+tree_10001 <- ind_tree_id(all_data, stem_tag = 10001)
+
+# View the result
+tree_10001
+```
+
+This output returns all available observations for the selected tree across the four years of data. Each row represents one specific year from 2021-2024, which allows users to observe changes in health status, size, and other recorded variables over time. This function is useful for identifying individual-level trends that may not be as apparent in other general analyses.
 
 ### Predicting Future Tree Health
 
-The `future_ttree()' function provides a prediction of whether the tree will survive next year based on previous health values.
+The 'future_tree()' function makes an estimate of the likelihood of an individual tree's survival into the next year based on the current living status and observed health from the previous year. This prediction is pretty naive, but incorporates the tree’s most recent health status as well as records of injury and disease, as well as how severe the damage is on a scale of 1-3, 3 being most severe.
 
-### Visualization Example
+```{r}
+# Combine all years into one dataset
+all_data <- comb_frame(data21, data22, data23, data24)
 
+# Predict survival probability for a single tree
+future_pred <- future_tree(all_data, stem_tag = 10001)
 
+# View the prediction
+future_pred
+```
 
-### Multiple Function Usage
+The output of this includes:
+- the tree’s unique stem tag
+- the most recent year of observation
+- the estimated probability of survival into the following year
+- a table of survival probabilities calculated for each observed year
 
+By returning both yearly probabilities and a final prediction, this function allows users to account for how changes in health status over time could contribute to changes in tree lifespan. While the predictions are very simple, it is an intentional design to provide an accessible introduction understand probabilistic outcomes.
 
+###Visualizations
+
+There are many plots that can be made with the data and summaries that this package provides. Below are some example visualizations that can be configured easily using the 'graph_trees()' function using biodiversity metrics specific health variables.
+
+####Example 1: Biodiversity vs. Mortality
+
+This plot shows the relationship between biodiversity and tree mortality for a given year:
+
+```{r}
+graph_trees(data21, plot_type = "biodiv_mortality", biodiv_metric = "shannon")
+```
+
+####Example 2: Tree Health Distribution
+
+This plot shows the distribution of a specific health metric (ex. percentage of crown living) to help identify species or areas with poorer health:
+
+```{r}
+graph_trees(data23, plot_type = "health_dist", health_tree = "percentage_of_crown_living")
+```
 
 ## Conclusion
 
-The `HealthCensus` package provides several tools and a set of experimental data that could prove useful to researchers looking to understand population data over time. It provides frameworks for simple summary statistics, predictive models, and biodiversity metrics to apply to other sets of data as well. It is designed to be used for ecological analysis but also is accessible for all levels of bioinformatics experience.
+The HealthCensus package provides several tools and a set of experimental data that could prove useful to researchers looking to understand population data over time. It provides frameworks for simple summary statistics, predictive models, and biodiversity metrics to apply to other sets of data as well. It is designed to be used for ecological analysis but also is accessible for all levels of bioinformatics experience.
