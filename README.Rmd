@@ -28,7 +28,7 @@ Our package will be built around data from Harvard Forest that measures the heal
 
 2. comb_frame(): Combines the data frames from the four different years into one large dataset, cleans this new dataset, and creates a new column with the variable name 'year' which groups the data by year. 
 
-3. sum_trees(): Calculates the total number of trees for each *level* of a given categorical variable. 
+3. sum_trees(): Calculates the total number of trees for each level of a given categorical variable from the data. 
 
 4. summary_health_year(): Prints summary statistics for indices of tree health (e.g. 'percentage_of_crown_intact', 'percentage_of_crown_living') either across all four years, or for one specific year. Creates a data set for these summary statistics. 
 
@@ -40,7 +40,7 @@ Our package will be built around data from Harvard Forest that measures the heal
 
 8. future_tree(): Predicts tree survival in future years based on probabilities of survival/measurements of tree health in previous years.
 
-9. graph_trees(): Generates visualizations (graphs, barplots, scatterplots, etc) that plot indices of tree health. 
+9. graph_trees(): Generates a visualization from five built-in options that plot key variables from the data, such as indices of tree health (percentage_of_crown_living, percentage_of_crown_intact), mortality (status), and biodiversity indices.
 
 10. biodiv_trees(): Tracks indices of tree health as a function of the quadrat a given tree is in to measure the impact of tree biodiversity on mortality. 
 
