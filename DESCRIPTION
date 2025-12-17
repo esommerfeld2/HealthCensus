@@ -37,5 +37,6 @@ Imports:
     dplyr,
     ggplot2,
     tidyr,
-    vegan
+    vegan, 
+    tidyverse
 VignetteBuilder: knitr

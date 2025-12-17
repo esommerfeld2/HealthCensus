@@ -17,12 +17,14 @@
 #'
 biodiv_trees <- function(data) {
 # remove missing species values from data, make sure each row/tree (n()) per species is summarized by quad_sub_quad (quadrat)
-bio.long <- data |>
-  filter(!is.na(species)) |>
-  select(quad_sub_quad) |>
-  mutate(ifelse(dead == "DS", "DN", "DC")) |>
-  group_by(quad_sub_quad, species) |>
-  summarize(abundance = n())
+mortality_trees <- data |>
+filter(!is.na(species)) |>
+mutate(dead = status %in% c("DS", "DN", "DC"))
+
+bio.long <- mortality_trees |>
+filter(!dead) |>
+group_by(quad_sub_quad, species) |>
+summarize(abundance = n())
 
 # convert to wide format
 bio.wide <- bio.long |>
@@ -53,7 +55,7 @@ bio.index <- data.frame(shannon, effective.sp, richness, max.H, evenness.J) |>
   rownames_to_column("quad_sub_quad")
 
 # create a data set for mortality per quadrat
-mortality <- bio.long |>
+mortality <- mortality_trees |>
   group_by(quad_sub_quad) |>
   summarize(total_trees = n(),
             dead_trees = sum(dead),
@@ -69,4 +71,3 @@ merged.df <- left_join(bio.index, mortality, by = "quadrat")
 # return merged data frame with biodiversity indices and mortality per quadrat merged to original dataset
 return(merged.df)
 }
-
