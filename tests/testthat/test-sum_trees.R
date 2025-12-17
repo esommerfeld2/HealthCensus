@@ -1,8 +1,6 @@
 # test_that("sum_trees works", {
-#    data <- data23 |>
-#      filter(species == "pinure")
-#
 #    tree_sums <- sum_trees(data23, "species")
+#
 #    # test that counts match manually computed values
 #    manual_counts <- data23 |>
 #      filter(!is.na(species)) |>

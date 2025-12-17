@@ -18,19 +18,20 @@
 #'
 biodiv_trees <- function(data) {
 # remove missing species values from data, make sure each row/tree (n()) per species is summarized by quad_sub_quad (quadrat)
+
 mortality_trees <- data |>
-filter(!is.na(species)) |>
+filter(!is.na(.data[["species"]])) |>
 mutate(dead = .data[["status"]] %in% c("DS", "DN", "DC"))
 
 bio.long <- mortality_trees |>
-filter(!dead) |>
+filter(!.data[["dead"]]) |>
 group_by(.data[["quad_sub_quad"]], .data[["species"]]) |>
 summarize(abundance = n())
 
 # convert to wide format
 bio.wide <- bio.long |>
-  pivot_wider(names_from = species,
-              values_from = abundance,
+  pivot_wider(names_from = .data[["species"]],
+              values_from = .data[["abundance"]],
               values_fill = list(abundance = 0)) |>
   column_to_rownames("quad_sub_quad")
 
@@ -57,13 +58,13 @@ bio.index <- data.frame(shannon, effective.sp, richness, max.H, evenness.J) |>
 
 # create a data set for mortality per quadrat
 mortality <- mortality_trees |>
-  group_by(quad_sub_quad) |>
+  group_by(.data[["quad_sub_quad"]]) |>
   summarize(total_trees = n(),
-            dead_trees = sum(dead),
-            mortality_rate = dead_trees / total_trees)
+            dead_trees = sum(.data[["dead"]]),
+            mortality_rate = .data[["dead_trees"]] / .data[["total_trees"]])
 # select quad_sub_quad to preserve quadrat/location metadata in final dataset
 quadrat <- data |>
-  select(quad_sub_quad) |>
+  select(.data[["quad_sub_quad"]]) |>
   distinct()
 
 # join bio.index to original data set

@@ -29,11 +29,11 @@
 #' graph_trees(data23, plot_type = "health_dist", health_tree = "percentage_of_crown_living")
 graph_trees <- function(data,
                         plot_type = c("crown_position", "biodiv_mortality", "health_dist", "status_bar"),
-                        health_tree = "percentage_crown_living",
+                        health_tree = c("percentage_of_crown_living", "percentage_of_crown_intact"),
                         biodiv_metric = c("shannon", "effective.sp", "richness", "max.H", "evenness.J")) {
 # five plot types
  if (plot_type == "crown_position") {
-  crown <- ggplot(data, aes(x = crown_position, y = percentage_crown_living)) +
+  crown <- ggplot(data, aes(x = .data[["crown_position"]], y = .data[["percentage_of_crown_living"]])) +
     geom_boxplot() +
     labs(x = "Crown Position in Canopy",
          y = "Percentage of Crown Living",
@@ -49,12 +49,12 @@ graph_trees <- function(data,
      stop("The chosen biodiversity metric must be one of: ",
           paste(valid_inputs, collapse = ", "))
    }
-   if(!"mortality_rate" %in% names(data)) {
+   if(!.data[["mortality_rate"]] %in% names(data)) {
      # include mortality_rate variable at quadrat level
      data <- biodiv_trees(data)
    }
 
-    bio_mort <- ggplot(data, aes(x = .data[[biodiv_metric]], y = mortality_rate)) +
+    bio_mort <- ggplot(data, aes(x = .data[[biodiv_metric]], y = .data[["mortality_rate"]])) +
      geom_point() +
      geom_smooth(method = "lm", se = TRUE) +
      labs(
@@ -80,7 +80,7 @@ graph_trees <- function(data,
 
   } else if (plot_type == "status_bar") {
 
-   mortality <- ggplot(data, aes(x = status)) +
+   mortality <- ggplot(data, aes(x = .data[["status"]])) +
      geom_bar(fill = "blue") +
      labs(
        x = "Mortality Status",
@@ -91,11 +91,11 @@ graph_trees <- function(data,
    return(mortality)
   } else if (plot_type == "fad_dist") {
     fad_dist <- data |>
-      filter(!is.na(fad)) |>
+      filter(!is.na(.data[["fad"]])) |>
       separate_rows(fad, sep = ", \\s*")
 
     fad_dist |>
-      ggplot(aes(x = fad)) +
+      ggplot(aes(x = .data[["fad"]])) +
       geom_bar() +
       labs(
         x = "Factors Associated with Death",
